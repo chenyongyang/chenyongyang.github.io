@@ -234,6 +234,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/25/一起来学cookies/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/一起来学cookies/" itemprop="url">一起来学cookies</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T20:40:39+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><ul>
+<li>cookies，也叫作小型文本文件，本质上是存储在客户端的数据，网站能够通过这些数据来辨别用户身份</li>
+<li>按照数据存储在客户端不同的位置，可以将cookies分为内存cookies、硬盘cookies</li>
+<li>内存cookies和浏览器挂钩，当关闭了浏览器，其占用的内存也就被释放，内存cookies自然就被清除；也被称为非持久cookies</li>
+<li>硬盘cookies，顾名思义就是存储在硬盘中的数据，一般都有个过期时间，用户也可以手动清除；也被称为持久cookies</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>购物车，当用户选中一个商品到购物车，服务器端返回浏览器页面的同时，也会将选中的商品的信息放入cookies一起发送过去，当用户再选中商品时，浏览器在发送请求上会带上之前的cookies，服务器接收到后，就能够将新的商品添加到上一次的商品后一起返回响应，这实际上解决了HTTP无状态所带来的客户操作状态无法保存的限制。</li>
+<li>网站登录。第一次登录时如果勾选了自动登录，那么服务器端接收到用户的表单数据，进行一系列验证，返回响应时会携带一个加密的cookies，这段cookies将存储在用户硬盘中，当第二次登录时，浏览器就可以发送这段cookies给服务器，服务器验证通过就可以直接登录了。</li>
+</ul>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><ul>
+<li>cookies在服务器端和客户端之间的传输，总是附加在HTTP报文中，增加了流量</li>
+<li>在HTTP中，cookies是明文的，不安全；可以考虑HTTPS</li>
+<li>存储大小只有4KB，不适合复杂数据存储</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/21/浏览器缓存/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -783,7 +917,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
