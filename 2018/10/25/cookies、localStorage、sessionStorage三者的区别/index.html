@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="共同点都是客户端存储方案 不同点： cookies在浏览器和服务器之间传输，附加于HTTP报文中；localStorage、sessionStorage只是活动于浏览器端，不需要和服务器通信 cookies有path字段，可以规范cookies的存储路径；localStorage、sessionStorage没有 存储大小方面，cookies只有4KB；，这是由于它是存在于HTTP报文中，数据量自">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T13:52:28.539Z">
+<meta property="og:updated_time" content="2018-10-25T13:58:40.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookies、localStorage、sessionStorage三者的区别">
 <meta name="twitter:description" content="共同点都是客户端存储方案 不同点： cookies在浏览器和服务器之间传输，附加于HTTP报文中；localStorage、sessionStorage只是活动于浏览器端，不需要和服务器通信 cookies有path字段，可以规范cookies的存储路径；localStorage、sessionStorage没有 存储大小方面，cookies只有4KB；，这是由于它是存在于HTTP报文中，数据量自">
@@ -315,7 +315,7 @@
 <li>数据的生命周期方面，cookies如果是存在于内存中，则在关闭浏览器后便被释放，如果存在于硬盘中，有个过期时间或可手动清除；localStorage如果不手动清除，将会一直存在；sessionStorage在当前浏览器关闭之前有效</li>
 <li>作用域方面，cookies、localStorage只要是同源窗口就能生效（即使是不同浏览器）sessionStorage在不同的浏览器是不同的（即使是同个网站）</li>
 <li>localStorage、sessionStorage API提供了可监听的事件，可以在数据变动是执行相应动作</li>
-<li>应用场景方面：cookies现在一般用于用户登录信息存储；localStorage、sessionStorage一般用于购物车、存储较大的数据量；表单信息等</li>
+<li>应用场景方面：cookies现在一般用于用户登录信息存储；localStorage、sessionStorage一般用于购物车、存储较大的数据量；表单信息；网站访客统计等；localStorage可做一些数据持久化工作，减少数据库的访问量</li>
 </ul>
 
       
