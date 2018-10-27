@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="什么是浏览器缓存？ 浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求 浏览器缓存的好处  缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化 资源重复利用，减少带宽，降低服务器压力  如何实现浏览器缓存？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-24T08:59:15.368Z">
+<meta property="og:updated_time" content="2018-10-27T03:25:56.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器缓存">
 <meta name="twitter:description" content="什么是浏览器缓存？ 浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求 浏览器缓存的好处  缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化 资源重复利用，减少带宽，降低服务器压力  如何实现浏览器缓存？">
@@ -411,6 +411,9 @@
 <p>强缓存不会发送请求到服务器，协商缓存会发送请求到服务器，通过请求首部字段验证</p>
 <p>强缓存：Pragma / Expires / Cache-Control</p>
 <p>协商缓存：Last-Modified/If-Modified-Since、ETag/If-None-Match</p>
+<h3 id="If-Modified-Since-Last-Modified"><a href="#If-Modified-Since-Last-Modified" class="headerlink" title="If-Modified-Since/Last-Modified"></a>If-Modified-Since/Last-Modified</h3><p>If-Modified-Since存在于请求头中，当它被发送到服务器时，服务器会将它和Last-Modified的值作对比，如果两者日期一致，则告知浏览器可以使用本地缓存</p>
+<h3 id="If-None-Match-Etag"><a href="#If-None-Match-Etag" class="headerlink" title="If-None-Match/Etag"></a>If-None-Match/Etag</h3><p>If-None-Match存储一个字符串，当它被发送到服务器时，服务器会将它和Etag的值作对比，如果匹配上了，则告知浏览器可以使用本地缓存</p>
+<p>流程是这样的：浏览器第一次请求页面，服务器在返回结果的同时，也将Last-Modified和Etag值传递过去；浏览器接收到响应，将这两个值都缓存起来；等到下一次请求同个页面，这两个值会将这两个值分别放入If-Modified-Since/If-None-Match并发送到服务器，服务器拿这两个值和之前的作对比，如果其中一个命中，就返回304和空响应体，这就是协商缓存的过程</p>
 <p>具体应用</p>
 <ul>
 <li>使用Expires来兼容旧浏览器</li>
@@ -517,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -587,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#If-Modified-Since-Last-Modified"><span class="nav-number">1.</span> <span class="nav-text">If-Modified-Since/Last-Modified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-None-Match-Etag"><span class="nav-number">2.</span> <span class="nav-text">If-None-Match/Etag</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
