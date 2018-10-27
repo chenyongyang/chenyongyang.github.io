@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="计算机网络,">
+  <meta name="keywords" content="前端存储,">
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="什么是浏览器缓存？ 浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求 浏览器缓存的好处  缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化 资源重复利用，减少带宽，降低服务器压力  如何实现浏览器缓存？">
-<meta name="keywords" content="计算机网络">
+<meta name="description" content="是什么 Cookie，也叫作小型文本文件，本质上是存储在客户端的数据，网站能够通过这些数据来辨别用户身份 按照数据存储在客户端不同的位置，可以将Cookie分为内存Cookie、硬盘Cookie 内存Cookie和浏览器挂钩，当关闭了浏览器，其占用的内存也就被释放，内存Cookie自然就被清除；也被称为非持久Cookie 硬盘Cookie，顾名思义就是存储在硬盘中的数据，一般都有个过期时间，用户也">
+<meta name="keywords" content="前端存储">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器缓存">
-<meta property="og:url" content="https://chenyongyang.github.io/2018/10/21/浏览器缓存/index.html">
+<meta property="og:title" content="一起来学Cookie">
+<meta property="og:url" content="https://chenyongyang.github.io/2018/10/25/一起来学Cookie/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="什么是浏览器缓存？ 浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求 浏览器缓存的好处  缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化 资源重复利用，减少带宽，降低服务器压力  如何实现浏览器缓存？">
+<meta property="og:description" content="是什么 Cookie，也叫作小型文本文件，本质上是存储在客户端的数据，网站能够通过这些数据来辨别用户身份 按照数据存储在客户端不同的位置，可以将Cookie分为内存Cookie、硬盘Cookie 内存Cookie和浏览器挂钩，当关闭了浏览器，其占用的内存也就被释放，内存Cookie自然就被清除；也被称为非持久Cookie 硬盘Cookie，顾名思义就是存储在硬盘中的数据，一般都有个过期时间，用户也">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-27T03:25:56.104Z">
+<meta property="og:updated_time" content="2018-10-27T12:28:11.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器缓存">
-<meta name="twitter:description" content="什么是浏览器缓存？ 浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求 浏览器缓存的好处  缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化 资源重复利用，减少带宽，降低服务器压力  如何实现浏览器缓存？">
+<meta name="twitter:title" content="一起来学Cookie">
+<meta name="twitter:description" content="是什么 Cookie，也叫作小型文本文件，本质上是存储在客户端的数据，网站能够通过这些数据来辨别用户身份 按照数据存储在客户端不同的位置，可以将Cookie分为内存Cookie、硬盘Cookie 内存Cookie和浏览器挂钩，当关闭了浏览器，其占用的内存也就被释放，内存Cookie自然就被清除；也被称为非持久Cookie 硬盘Cookie，顾名思义就是存储在硬盘中的数据，一般都有个过期时间，用户也">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/2018/10/21/浏览器缓存/">
+  <link rel="canonical" href="https://chenyongyang.github.io/2018/10/25/一起来学Cookie/">
 
 
 
 
 
-  <title>浏览器缓存 | 我的博客</title>
+  <title>一起来学Cookie | 我的博客</title>
   
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/21/浏览器缓存/">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/25/一起来学Cookie/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈泳仰">
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浏览器缓存</h1>
+          <h1 class="post-title" itemprop="name headline">一起来学Cookie</h1>
         
 
         <div class="post-meta">
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T17:14:21+08:00">
-                2018-10-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T20:40:39+08:00">
+                2018-10-25
               </time>
             
 
@@ -299,6 +299,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端存储/" itemprop="url" rel="index">
+                    <span itemprop="name">前端存储</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -327,124 +349,20 @@
       
 
       
-        <p>什么是浏览器缓存？</p>
-<p>浏览器将对于已经请求过的资源缓存起来，等到下一次请求同样资源时，浏览器直接将缓存副本返回响应，不必向浏览器发送请求</p>
-<p>浏览器缓存的好处</p>
-<ul>
-<li>缩短网络请求的距离，减少延迟，加快网页打开速度，性能优化</li>
-<li>资源重复利用，减少带宽，降低服务器压力</li>
+        <h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><ul>
+<li>Cookie，也叫作小型文本文件，本质上是存储在客户端的数据，网站能够通过这些数据来辨别用户身份</li>
+<li>按照数据存储在客户端不同的位置，可以将Cookie分为内存Cookie、硬盘Cookie</li>
+<li>内存Cookie和浏览器挂钩，当关闭了浏览器，其占用的内存也就被释放，内存Cookie自然就被清除；也被称为非持久Cookie</li>
+<li>硬盘Cookie，顾名思义就是存储在硬盘中的数据，一般都有个过期时间，用户也可以手动清除；也被称为持久Cookie</li>
 </ul>
-<p>如何实现浏览器缓存？</p>
-<a id="more"></a>
-<p>首先来了解与缓存有关的HTTP报文字段</p>
-<ul>
-<li><p>通用首部字段</p>
-<ul>
-<li><p>Pragma</p>
-<ul>
-<li><p>定义在Meta标签，通常指为no-cache，禁用缓存</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Pragma"</span> <span class="attr">content</span>=<span class="string">"no-cache"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>浏览器设置作用不大，服务器端设置为主</li>
-<li>仅IE能识别</li>
-<li>与禁用缓存相对的是启用缓存，Expires出现了</li>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>购物车，当用户选中一个商品到购物车，服务器端返回浏览器页面的同时，也会将选中的商品的信息放入Cookie一起发送过去，当用户再选中商品时，浏览器在发送请求上会带上之前的Cookie，服务器接收到后，就能够将新的商品添加到上一次的商品后一起返回响应，这实际上解决了HTTP无状态所带来的客户操作状态无法保存的限制。</li>
+<li>网站登录。第一次登录时如果勾选了自动登录，那么服务器端接收到用户的表单数据，进行一系列验证，返回响应时会携带一个加密的Cookie，这段Cookie将存储在用户硬盘中，当第二次登录时，浏览器就可以发送这段Cookie给服务器，服务器验证通过就可以直接登录了。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Cache-Control</p>
-<ul>
-<li>解决服务器和浏览器时间标准不一致</li>
-<li>定义缓存过期时间，与Pragma Expires相比，优先级最高<ul>
-<li>如果资源缓存过期，但资源还是一样，在资源较大的情况下，是不应该又去服务器请求一遍的</li>
-<li>我们需要让服务器知道浏览器缓存的资源是否跟自己一致，如果一致就让浏览器直接用缓存，这时候Last-Modified出现了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>请求首部字段<ul>
-<li>If-Match<ul>
-<li>浏览器通过PUT方法时，通过这个字段传递ETag</li>
-</ul>
-</li>
-<li>If-None-Match<ul>
-<li>浏览器告诉服务器如果ETag没匹配上，返回新资源，否则返回304<ul>
-<li>ETag就存储在这个字段中</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>If-Modified-Since<ul>
-<li>浏览器通过这个字段告诉服务器如果最后修改时间一致，则返回304<ul>
-<li>Last-Modified就存储在这个字段中</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>If-Unmodified-Since<ul>
-<li>浏览器通过这个字段告诉服务器如果最后修改时间不一致，则返回412</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应首部字段<ul>
-<li>ETag<ul>
-<li>服务器返回资源的同时，将ETag一并返回，浏览器接收到后为资源打上这个标记，下一次请求时，将这个值发给服务器，服务器和之前的作对比，如果一致，返回304；否则返回新资源</li>
-<li>通过对资源进行某个算法，生成一个类似md5的唯一标识符，而不仅仅靠修改时间<ul>
-<li>如果和Last-Modified同时使用，需要两者都返回304，才会走缓存，否则返回新资源</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>实体首部字段</p>
-<ul>
-<li><p>Expires</p>
-<ul>
-<li><p>服务器返回的资源缓存过期时间（GMT 格林尼治时间），时间点是服务器的时间</p>
-<ul>
-<li><p>在浏览器，IE下可以这样设置，这种做法也仅限IE</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"expires"</span> <span class="attr">content</span>=<span class="string">"mon, 18 apr 2016 14:30:00 GMT"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>得在服务器端报头返回该字段，缓存过期时间才能正确生效</p>
-</li>
-<li>同时设置，Pragma优先级更高</li>
-<li>但如果服务器和浏览器的时间标准不一致，这个设置也就失效了，因此Cache-Control出现了</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Last-Modified<ul>
-<li>服务器端资源的最后修改时间</li>
-<li>服务器向浏览器返回资源的同时，会携带一个Last-Modified，它的值为格林尼治时间；浏览器接收到响应后，会给资源标记上这个值，等到下一次向服务器请求时，将这个值一并发过去，服务器就会对比浏览器发过来的值和之前发给浏览器的值，如果两个最后修改的时间一致，则返回304，让浏览器直接读取缓存资源<ul>
-<li>不足：当服务器资源被修改，但实际内容没变，这个时候还是会将资源返回，这时候ETag出现了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>强缓存不会发送请求到服务器，协商缓存会发送请求到服务器，通过请求首部字段验证</p>
-<p>强缓存：Pragma / Expires / Cache-Control</p>
-<p>协商缓存：Last-Modified/If-Modified-Since、ETag/If-None-Match</p>
-<h3 id="If-Modified-Since-Last-Modified"><a href="#If-Modified-Since-Last-Modified" class="headerlink" title="If-Modified-Since/Last-Modified"></a>If-Modified-Since/Last-Modified</h3><p>If-Modified-Since存在于请求头中，当它被发送到服务器时，服务器会将它和Last-Modified的值作对比，如果两者日期一致，则告知浏览器可以使用本地缓存</p>
-<h3 id="If-None-Match-Etag"><a href="#If-None-Match-Etag" class="headerlink" title="If-None-Match/Etag"></a>If-None-Match/Etag</h3><p>If-None-Match存储一个字符串，当它被发送到服务器时，服务器会将它和Etag的值作对比，如果匹配上了，则告知浏览器可以使用本地缓存</p>
-<p>流程是这样的：浏览器第一次请求页面，服务器在返回结果的同时，也将Last-Modified和Etag值传递过去；浏览器接收到响应，将这两个值都缓存起来；等到下一次请求同个页面，这两个值会将这两个值分别放入If-Modified-Since/If-None-Match并发送到服务器，服务器拿这两个值和之前的作对比，如果其中一个命中，就返回304和空响应体，这就是协商缓存的过程</p>
-<p>具体应用</p>
-<ul>
-<li>使用Expires来兼容旧浏览器</li>
-<li>使用Cache-Control来精准控制缓存</li>
-<li>使用ETag和Last-Modified来进一步复用</li>
-<li>一般缓存时间为60s</li>
-<li>对于静态资源（如图片）则会久一点<ul>
-<li>浏览器可以在图片的URL后设置max-age</li>
-<li>浏览器可以对静态资源以版本形式发布，加上hash值，以确保能及时从服务器获取最新资源</li>
-</ul>
-</li>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><ul>
+<li>Cookie在服务器端和客户端之间的传输，总是附加在HTTP报文中，增加了流量</li>
+<li>在HTTP中，Cookie是明文的，不安全；可以考虑HTTPS</li>
+<li>存储大小只有4KB，不适合复杂数据存储</li>
 </ul>
 
       
@@ -463,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+            <a href="/tags/前端存储/" rel="tag"># 前端存储</a>
           
         </div>
       
@@ -476,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/21/动手实现Vue-js响应式/" rel="next" title="动手实现Vue.js响应式">
-                <i class="fa fa-chevron-left"></i> 动手实现Vue.js响应式
+              <a href="/2018/10/21/前端缓存/" rel="next" title="前端缓存">
+                <i class="fa fa-chevron-left"></i> 前端缓存
               </a>
             
           </div>
@@ -486,8 +404,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/25/一起来学cookies/" rel="prev" title="一起来学cookies">
-                一起来学cookies <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/25/Cookie、localStorage、sessionStorage三者的区别/" rel="prev" title="Cookie、localStorage、sessionStorage三者的区别">
+                Cookie、localStorage、sessionStorage三者的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -567,7 +485,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -578,7 +496,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -638,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#If-Modified-Since-Last-Modified"><span class="nav-number">1.</span> <span class="nav-text">If-Modified-Since/Last-Modified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-None-Match-Etag"><span class="nav-number">2.</span> <span class="nav-text">If-None-Match/Etag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#是什么"><span class="nav-number">1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不足"><span class="nav-number">3.</span> <span class="nav-text">不足</span></a></li></ol></div>
             
 
           </div>
