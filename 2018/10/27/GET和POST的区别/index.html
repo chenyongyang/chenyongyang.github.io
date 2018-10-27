@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="要讲清楚这两个请求方法的区别，其实可以从RTC（一个互联网规范）对HTTP协议描述的特性出发 HTTP协议对请求方法规定了这几个特性：安全性、幂等性、可缓存性 首先是安全性。如果一个方法的语义是只读，那它就是安全的，也就是意味着它不会对服务器的资源作任何的改动；它是无害的。这些都是属于规范层面，但在实际操纵中的实现不一定是安全的，例如用GET方法修改用户信息 其次是幂等性。概念是同个方法执行多次和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-27T02:57:53.266Z">
+<meta property="og:updated_time" content="2018-10-27T03:08:27.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GET和POST的区别">
 <meta name="twitter:description" content="要讲清楚这两个请求方法的区别，其实可以从RTC（一个互联网规范）对HTTP协议描述的特性出发 HTTP协议对请求方法规定了这几个特性：安全性、幂等性、可缓存性 首先是安全性。如果一个方法的语义是只读，那它就是安全的，也就是意味着它不会对服务器的资源作任何的改动；它是无害的。这些都是属于规范层面，但在实际操纵中的实现不一定是安全的，例如用GET方法修改用户信息 其次是幂等性。概念是同个方法执行多次和">
@@ -315,6 +315,7 @@
 <p>还要其他一些区别：GET有长度限制，这和GET是通过URL参数传递信息有关；POST长度不限；</p>
 <p>总结：GET方法是获取指定资源，它是安全的、幂等的、可以缓存的；POST方法根据报文主体的payload对指定资源作处理，它是不安全、不幂等、不可缓存</p>
 <p>如果POST方法的数据有缓存的需要，那应该怎么处理呢？</p>
+<p>参考链接：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN上关于HTTP的阐述</a></p>
 
       
     </div>
