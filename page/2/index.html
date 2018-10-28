@@ -254,6 +254,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/GET和POST的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/GET和POST的区别/" itemprop="url">GET和POST的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T10:31:47+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>要讲清楚这两个请求方法的区别，其实可以从RTC（一个互联网规范）对HTTP协议描述的特性出发</p>
+<p>HTTP协议对请求方法规定了这几个特性：安全性、幂等性、可缓存性</p>
+<p>首先是安全性。如果一个方法的语义是只读，那它就是安全的，也就是意味着它不会对服务器的资源作任何的改动；它是无害的。这些都是属于规范层面，但在实际操纵中的实现不一定是安全的，例如用GET方法修改用户信息</p>
+<p>其次是幂等性。概念是同个方法执行多次和执行一次效果是一样的。GET方法是幂等的，POST方法不幂等。原因是可以从为什么要引入幂等性思考？主要是为了处理同一个请求重复发送的问题。例如用户填写了表单，表单数据用POST提交到服务器，此时用户不小心使得浏览器后退或者刷新了页面，浏览器就会提示用户数据会丢失，保证POST过去的都不是重复的</p>
+<p>最后是可缓存性。GET方法可以缓存，POST方法不可缓存，这也是处于语义上的需要</p>
+<p>还要其他一些区别：GET有长度限制，这和GET是通过URL参数传递信息有关；POST长度不限；</p>
+<p>总结：GET方法是获取指定资源，它是安全的、幂等的、可以缓存的；POST方法根据报文主体的payload对指定资源作处理，它是不安全、不幂等</p>
+<p>参考链接：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN上关于HTTP的阐述</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/26/Vue-js响应式原理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1347,7 +1496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

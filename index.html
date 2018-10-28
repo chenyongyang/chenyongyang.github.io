@@ -254,6 +254,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/28/由一道JS题引发的思考/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/28/由一道JS题引发的思考/" itemprop="url">由一道JS题引发的思考</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T13:31:18+08:00">
+                2018-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一道题</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i) <span class="comment">// 打印出10个10</span></span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i) <span class="comment">// 打印出10个10</span></span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;(i));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二道题</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123; </span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(),i);</span><br><span class="line">        &#125;, <span class="number">1000</span>*i );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"end"</span>,<span class="keyword">new</span> <span class="built_in">Date</span>(),i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">    打印结果：</span></span><br><span class="line"><span class="comment">    end Sun Oct 28 2018 13:36:43 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:43 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:44 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:45 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:46 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:47 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">/</span></span><br></pre></td></tr></table></figure>
+<p>原因其实都是类似的，setTimeout是采取异步执行机制，它会等主程序先执行完再执行，而等到主程序执行完，也就是循环已经结束了，此时i的值就是让循环终止的那个临界值，setTimeout拿到这个i值执行相应的回调函数，打印结果</p>
+<p>那如果想把每个i的值都打印出来呢？闭包就可以解决这个问题</p>
+<p>思路是这样的：循环的时候把每次i值存起来，供异步执行回调时使用</p>
+<p>本质就是：虽然程序执行完毕，但它的作用域中的变量不会被销毁，保存在内存中，这样回调就使用</p>
+<p>继续思考，变量什么时候被销毁？这就涉及到JS垃圾收集机制</p>
+<p>最常用的垃圾收集方式是标记清除。也就是当变量进入执行环境后，就将这个变量标记为进入环境；当变量离开环境时，就将变量标记为离开环境。然后将在环境中的变量、被环境中变量所引用的变量的标记去掉，这样还带有标记的变量就是准备删除的，垃圾收集器就会对它们进行内存清除</p>
+<p>换言之，当变量不存在与环境中，或者不被环境中变量所引用时，它就会被清除</p>
+<p>回到刚才，我们想要的是循环程序执行完毕，每次循环所创建的环境中的变量i保存下来，那就需要让这个i值被处在环境中的程序所引用，处在环境中的程序也就是这个异步回调，那问题就变成如何让这个异步回调引用每次的i值？</p>
+<p>只需要给每次循环创建一个块级作用域就行了。最简单的就是使用ES6的let关键字，它会创建一个块级作用域<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i) <span class="comment">// 依次打印出0 1 2 3 ...</span></span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123; </span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(),i); <span class="comment">// 这里也可以依次打印出i值</span></span><br><span class="line">        &#125;, <span class="number">1000</span>*i );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"end"</span>,<span class="keyword">new</span> <span class="built_in">Date</span>(),i); <span class="comment">// 这里取不到i值，因为此时i是块级作用域，外部程序获取不到</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>是否还有其他解决方法呢？当然有，它就是闭包。</p>
+<p>闭包是什么？理论上任何函数都是闭包，当在函数内返回函数时，内层闭包就能够获取到外层函数作用域上的变量，当外层函数将内层函数返回，并且内层函数还被外部环境所引用时，我们就实现了外部环境获取函数内部作用域变量。外部环境任何时候都能够引用外层函数内部的变量，也就是外层函数的内部变量被外部环境所引用，这时候即使外层函数执行完销毁了，但是存在于它作用域被引用的变量不会被销毁，会一直保存在内存中。</p>
+<p>按照这个思路，我们就可以在异步回调的外层在套上一层函数，将每次循环的i值作为参数传递进去，使得i值作为包围函数作用域的变量，这样异步回调执行时，就可以到包围函数的作用域上获取到i值了，这里涉及到作用域链的知识，接下来会单独写一篇来讲作用域链。</p>
+<p>现在的情况就是：异步回调引用了外层函数的i值，因此当外层函数随着循环结束而完毕时，内部的i值仍然可以被异步回调所访问。所以我们的程序就变成下面这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i) <span class="comment">// 依次打印出0 1 2 3 ...</span></span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;(i));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123; </span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(),i); <span class="comment">// 这里也可以依次打印出0 1 2 ...</span></span><br><span class="line">            &#125;, <span class="number">1000</span>*i );</span><br><span class="line">        &#125;(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"end"</span>,<span class="keyword">new</span> <span class="built_in">Date</span>(),i); <span class="comment">// 这里自然就是循环完毕i的临界值，5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，让我们来总结一下。这类题目主要考察我们对于JavaScript的异步执行机制、作用域、闭包的理解与运用，是每个前端开发者应该掌握的基础知识。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/28/HTTP-2初探/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1088,6 +1244,10 @@
         
           
             <h3 id="HTTPS概述"><a href="#HTTPS概述" class="headerlink" title="HTTPS概述"></a>HTTPS概述</h3><p>HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。</p>
+<h3 id="HTTPS为什么会出现"><a href="#HTTPS为什么会出现" class="headerlink" title="HTTPS为什么会出现"></a>HTTPS为什么会出现</h3><p>就是因为HTTP存在着以下这些问题：<br>1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理</p>
+<p>2、被伪装，客户端请求到的数据并一定来源于合法的地址；对此HTTPS采用了数字证书</p>
+<p>3、被篡改，HTTP在传输过程中，数据可以随时被改动；对此HTTPS对数据进行摘要，可以感知数据变动</p>
+<p>正是出于这些不安全因素，HTTPS应运而生</p>
 <h3 id="HTTPS方案"><a href="#HTTPS方案" class="headerlink" title="HTTPS方案"></a>HTTPS方案</h3><p>一般通过URL来告知Web服务器执行HTTP安全协议版本，也就是URL方案的前缀为http或https</p>
 <p>如果URL走的是HTTPS，客户端会开启443默认端口来连接服务器，进行握手过程，同服务器交换SSL安全参数，附上加密的HTTP命令</p>
 <h3 id="安全传输建立流程"><a href="#安全传输建立流程" class="headerlink" title="安全传输建立流程"></a>安全传输建立流程</h3><p>客户端发送一个HTTPS方案的请求之后，客户端会通过443端口与服务器建立连接，TCP连接建立以后，客户端和服务器会初始化SSL层，沟通加密参数，并交换密钥，握手完成后，SSL初始化完成，客户端发送请求报文给安全层。</p>
@@ -1112,6 +1272,11 @@
 <li>签名检测</li>
 <li>站点身份检测</li>
 </ul>
+<h3 id="SSL握手简化版流程"><a href="#SSL握手简化版流程" class="headerlink" title="SSL握手简化版流程"></a>SSL握手简化版流程</h3><p>客户端发送HTTPS请求给服务器端</p>
+<p>服务器端选择合适的加密协议后，返回数字证书及公钥</p>
+<p>客户端验证数字证书是否合格，如果不合格则提示证书有问题；如果合格；则随机生成对称密钥，使用数字证书上的公钥对其进行加密，发送给服务器端</p>
+<p>服务器端使用私钥对证书进行解密，得到客户端的对称密钥，对要返回的内容用对称私钥加密，发送给客户端</p>
+<p>客户端通过对称私钥解密，得到数据，握手结束</p>
 
           
         
@@ -1292,155 +1457,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/GET和POST的区别/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈泳仰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/27/GET和POST的区别/" itemprop="url">GET和POST的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T10:31:47+08:00">
-                2018-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>要讲清楚这两个请求方法的区别，其实可以从RTC（一个互联网规范）对HTTP协议描述的特性出发</p>
-<p>HTTP协议对请求方法规定了这几个特性：安全性、幂等性、可缓存性</p>
-<p>首先是安全性。如果一个方法的语义是只读，那它就是安全的，也就是意味着它不会对服务器的资源作任何的改动；它是无害的。这些都是属于规范层面，但在实际操纵中的实现不一定是安全的，例如用GET方法修改用户信息</p>
-<p>其次是幂等性。概念是同个方法执行多次和执行一次效果是一样的。GET方法是幂等的，POST方法不幂等。原因是可以从为什么要引入幂等性思考？主要是为了处理同一个请求重复发送的问题。例如用户填写了表单，表单数据用POST提交到服务器，此时用户不小心使得浏览器后退或者刷新了页面，浏览器就会提示用户数据会丢失，保证POST过去的都不是重复的</p>
-<p>最后是可缓存性。GET方法可以缓存，POST方法不可缓存，这也是处于语义上的需要</p>
-<p>还要其他一些区别：GET有长度限制，这和GET是通过URL参数传递信息有关；POST长度不限；</p>
-<p>总结：GET方法是获取指定资源，它是安全的、幂等的、可以缓存的；POST方法根据报文主体的payload对指定资源作处理，它是不安全、不幂等</p>
-<p>参考链接：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN上关于HTTP的阐述</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1493,7 +1509,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
