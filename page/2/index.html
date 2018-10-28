@@ -254,6 +254,326 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/HTTP权威指南学习笔记——HTTPS/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/HTTP权威指南学习笔记——HTTPS/" itemprop="url">HTTP权威指南学习笔记——HTTPS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T14:10:17+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="HTTPS概述"><a href="#HTTPS概述" class="headerlink" title="HTTPS概述"></a>HTTPS概述</h3><p>HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。</p>
+<h3 id="HTTPS为什么会出现"><a href="#HTTPS为什么会出现" class="headerlink" title="HTTPS为什么会出现"></a>HTTPS为什么会出现</h3><p>就是因为HTTP存在着以下这些问题：<br>1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理</p>
+<p>2、被伪装，客户端请求到的数据并一定来源于合法的地址；对此HTTPS采用了数字证书</p>
+<p>3、被篡改，HTTP在传输过程中，数据可以随时被改动；对此HTTPS对数据进行摘要，可以感知数据变动</p>
+<p>正是出于这些不安全因素，HTTPS应运而生</p>
+<h3 id="HTTPS方案"><a href="#HTTPS方案" class="headerlink" title="HTTPS方案"></a>HTTPS方案</h3><p>一般通过URL来告知Web服务器执行HTTP安全协议版本，也就是URL方案的前缀为http或https</p>
+<p>如果URL走的是HTTPS，客户端会开启443默认端口来连接服务器，进行握手过程，同服务器交换SSL安全参数，附上加密的HTTP命令</p>
+<h3 id="安全传输建立流程"><a href="#安全传输建立流程" class="headerlink" title="安全传输建立流程"></a>安全传输建立流程</h3><p>客户端发送一个HTTPS方案的请求之后，客户端会通过443端口与服务器建立连接，TCP连接建立以后，客户端和服务器会初始化SSL层，沟通加密参数，并交换密钥，握手完成后，SSL初始化完成，客户端发送请求报文给安全层。</p>
+<h3 id="如何保障安全"><a href="#如何保障安全" class="headerlink" title="如何保障安全"></a>如何保障安全</h3><p>对称加密、非对称加密、数字证书</p>
+<h3 id="加密的HTTPS事务流程"><a href="#加密的HTTPS事务流程" class="headerlink" title="加密的HTTPS事务流程"></a>加密的HTTPS事务流程</h3><ul>
+<li>建立到服务器443端口的TCP连接</li>
+<li>双方进行SSL安全参数握手</li>
+<li>在SSL发送HTTP请求，在TCP发送已经加密的请求</li>
+<li>在SSL发送HTTP响应，在TCP发送已经加密的响应</li>
+<li>SSL关闭通知</li>
+<li>TCP关闭连接</li>
+</ul>
+<h3 id="SSL安全参数握手流程"><a href="#SSL安全参数握手流程" class="headerlink" title="SSL安全参数握手流程"></a>SSL安全参数握手流程</h3><ul>
+<li>客户端向服务器发送可供选择的密码，并请求证书</li>
+<li>服务器发送选中密码和证书</li>
+<li>客户端发送保密信息，双方生成密钥</li>
+<li>双方互相告知，开始加密过程</li>
+</ul>
+<h3 id="站点证书的有效性校验"><a href="#站点证书的有效性校验" class="headerlink" title="站点证书的有效性校验"></a>站点证书的有效性校验</h3><ul>
+<li>日期检测</li>
+<li>签名颁发者可信度检测</li>
+<li>签名检测</li>
+<li>站点身份检测</li>
+</ul>
+<h3 id="SSL握手简化版流程"><a href="#SSL握手简化版流程" class="headerlink" title="SSL握手简化版流程"></a>SSL握手简化版流程</h3><p>客户端发送HTTPS请求给服务器端</p>
+<p>服务器端选择合适的加密协议后，返回数字证书及公钥</p>
+<p>客户端验证数字证书是否合格，如果不合格则提示证书有问题；如果合格；则随机生成对称密钥，使用数字证书上的公钥对其进行加密，发送给服务器端</p>
+<p>服务器端使用私钥对证书进行解密，得到客户端的对称密钥，对要返回的内容用对称私钥加密，发送给客户端</p>
+<p>客户端通过对称私钥解密，得到数据，握手结束</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/前端性能优化01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/前端性能优化01/" itemprop="url">前端性能优化01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T13:48:03+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前端性能优化可以从很多方面入手，其中网络请求层面是一个重点内容，而这方面一般有两个思路，1、减少网络请求；2、减小网络请求的体积  </p>
+<p>减少网络请求体积的一般做法有：合并请求资源，制作雪碧图，压缩请求等</p>
+<p>js执行层面之所以耗费资源主要是源于内存泄漏，所以我们经常说要及时清空没有被使用的引用</p>
+<p>页面渲染层面，一般强调减少DOM操作，这也是虚拟DOM产生的背景</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/GET和POST的区别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1144,311 +1464,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/07/21/学习Vue-js源码的前置知识/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈泳仰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/学习Vue-js源码的前置知识/" itemprop="url">学习Vue.js源码的前置知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T12:00:00+08:00">
-                2018-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue-js/" itemprop="url" rel="index">
-                    <span itemprop="name">vue.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><ul>
-<li>Flow JavaScript静态类型检测，类似于typescript</li>
-<li>object.defineProperty</li>
-<li>proxy get set</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2017/10/30/Hexo基本操作/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈泳仰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/30/Hexo基本操作/" itemprop="url">Hexo基本操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T08:00:00+08:00">
-                2017-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>写文章</p>
-<ul>
-<li>hexo new 文章标题</li>
-</ul>
-<p>预览效果</p>
-<ul>
-<li>hexo s 开启hexo server 在localhost调试</li>
-</ul>
-<p>发布到github page</p>
-<ul>
-<li>hexo clean 清除历史数据</li>
-<li>hexo d -g 先生成再发布</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1496,7 +1516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

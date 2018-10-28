@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829303132// 第一道题for (var i = 0; i &amp;lt; 10; ++i) &amp;#123;    setTimeout(function () &amp;#123;        console.log(i) // 打印出10个10    &amp;#125;, 0);&amp;#125;for (var i =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T06:41:51.219Z">
+<meta property="og:updated_time" content="2018-10-28T06:48:39.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="由一道JS题引发的思考">
 <meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132// 第一道题for (var i = 0; i &amp;lt; 10; ++i) &amp;#123;    setTimeout(function () &amp;#123;        console.log(i) // 打印出10个10    &amp;#125;, 0);&amp;#125;for (var i =">
@@ -350,7 +350,7 @@
 
       
         <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一道题</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i) <span class="comment">// 打印出10个10</span></span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i) <span class="comment">// 打印出10个10</span></span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;(i));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二道题</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123; </span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(),i);</span><br><span class="line">        &#125;, <span class="number">1000</span>*i );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"end"</span>,<span class="keyword">new</span> <span class="built_in">Date</span>(),i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">    打印结果：</span></span><br><span class="line"><span class="comment">    end Sun Oct 28 2018 13:36:43 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:43 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:44 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:45 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:46 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">    Sun Oct 28 2018 13:36:47 GMT+0800 (中国标准时间) 5</span></span><br><span class="line"><span class="comment">/</span></span><br></pre></td></tr></table></figure>
-<p>原因其实都是类似的，setTimeout是采取异步执行机制，它会等主程序先执行完再执行，而等到主程序执行完，也就是循环已经结束了，此时i的值就是让循环终止的那个临界值，setTimeout拿到这个i值执行相应的回调函数，打印结果</p>
+<p>原因其实都是类似的，setTimeout是采取异步执行机制，它会等主线程先执行完再执行，而等到主线程执行完，也就是循环已经结束了，此时i的值就是让循环终止的那个临界值，setTimeout拿到这个i值执行相应的回调函数，打印结果</p>
 <p>那如果想把每个i的值都打印出来呢？闭包就可以解决这个问题</p>
 <p>思路是这样的：循环的时候把每次i值存起来，供异步执行回调时使用</p>
 <p>本质就是：虽然程序执行完毕，但它的作用域中的变量不会被销毁，保存在内存中，这样回调就使用</p>
@@ -403,6 +403,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/28/JavaScript数组乱序/" rel="prev" title="JavaScript数组乱序">
+                JavaScript数组乱序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -472,7 +476,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
