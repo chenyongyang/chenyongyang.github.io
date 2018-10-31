@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="今天来一起来弄懂TCP连接这一块知识点。">
+<meta name="description" content="IP协议只是让两台主机连接起来，数据只是到了主机这个层面，数据真正的通信的主体是主机中的进程 TCP连接是更进一步的连接，是端对端的通信、应用进程之间的通信 TCP服务器进程建立TCB传输控制块（被动打开），准备接收客户进程的连接请求，此时服务器进入LISTEN监听状态 TCP客户进程建立TCB传输控制块（主动打开），向服务器进程发送连接请求报文报文首部包含一个同步位SYN=1，并选择一个初始序列">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络——TCP连接">
 <meta property="og:url" content="https://chenyongyang.github.io/2018/10/30/计算机网络——TCP连接/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="今天来一起来弄懂TCP连接这一块知识点。">
+<meta property="og:description" content="IP协议只是让两台主机连接起来，数据只是到了主机这个层面，数据真正的通信的主体是主机中的进程 TCP连接是更进一步的连接，是端对端的通信、应用进程之间的通信 TCP服务器进程建立TCB传输控制块（被动打开），准备接收客户进程的连接请求，此时服务器进入LISTEN监听状态 TCP客户进程建立TCB传输控制块（主动打开），向服务器进程发送连接请求报文报文首部包含一个同步位SYN=1，并选择一个初始序列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T13:58:07.765Z">
+<meta property="og:updated_time" content="2018-10-31T12:44:50.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络——TCP连接">
-<meta name="twitter:description" content="今天来一起来弄懂TCP连接这一块知识点。">
+<meta name="twitter:description" content="IP协议只是让两台主机连接起来，数据只是到了主机这个层面，数据真正的通信的主体是主机中的进程 TCP连接是更进一步的连接，是端对端的通信、应用进程之间的通信 TCP服务器进程建立TCB传输控制块（被动打开），准备接收客户进程的连接请求，此时服务器进入LISTEN监听状态 TCP客户进程建立TCB传输控制块（主动打开），向服务器进程发送连接请求报文报文首部包含一个同步位SYN=1，并选择一个初始序列">
 
 
 
@@ -349,7 +349,18 @@
       
 
       
-        <p>今天来一起来弄懂TCP连接这一块知识点。</p>
+        <p>IP协议只是让两台主机连接起来，数据只是到了主机这个层面，数据真正的通信的主体是主机中的进程</p>
+<p>TCP连接是更进一步的连接，是端对端的通信、应用进程之间的通信</p>
+<p>TCP服务器进程建立TCB传输控制块（被动打开），准备接收客户进程的连接请求，此时服务器进入LISTEN监听状态</p>
+<p>TCP客户进程建立TCB传输控制块（主动打开），向服务器进程发送连接请求报文<br>报文首部包含一个同步位SYN=1，并选择一个初始序列号seq=x，此时TCP客户端进程进入SYN-SENT同步已发送状态</p>
+<p>TCP服务器进程接收到请求报文后，如果同意连接，就发送确认报文<br>报文首部包含同步位SYN=1,ACK=1，确认号ack=x+1,自己也要初始化一个序列号seq=y,此时服务器进入SYN-RCVD同步收到状态，之所以自己还要发送一个序列号，这是规定</p>
+<p>客户端进程接收到确认报文后，发送确认报文给服务器进程ACK=1，序列号seq=x+1,确认号ack=y+1</p>
+<p>连接确立，客户端进程进入ESTABILISH已建立连接状态，双方可以开始通信</p>
+<p>假设就执行的是两次握手的流程，客户端进程发送请求，服务器端进程接收后确认，连接就确立。那么假如客户端进程向服务器端进程发送一条请求，由于各种原因，请求很慢才到达服务器端进程，客户端进程以为服务器端接收不到，又重新发了一次，服务器端接收到后确认建立连接，这次连接就算完成了；但是第一次发送的还在路上的请求到了服务器端那边，服务器端又接收、确立，建立连接，显然第二次连接是重复的，这是不必要的资源浪费</p>
+<p>如果是三次握手，那么当服务器端接收到第二次重复请求时，发送确认报文给客户端，但客户端并没有发送确认报文，服务器端就会认为客户端并没有这个请求，也就是识别到这是个无效请求，之间也就不会建立连接</p>
+<p>为什么第一、二次握手，都需要发送SYN同步位呢？第三次不用</p>
+<p>确认号加1是因为这些序列号都是累计的</p>
+<p>套接字：IP地址 + 端口号</p>
 
       
     </div>
