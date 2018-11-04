@@ -84,15 +84,18 @@
 
 
 
+<meta name="description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法篇——插入排序">
 <meta property="og:url" content="https://chenyongyang.github.io/2018/11/04/算法篇——插入排序/index.html">
 <meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-04T07:05:28.172Z">
+<meta property="og:updated_time" content="2018-11-04T08:49:33.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法篇——插入排序">
+<meta name="twitter:description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
 
 
 
@@ -346,7 +349,8 @@
       
 
       
-        
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> outer = <span class="number">1</span>; outer &lt;= arr.length <span class="number">-1</span>; outer++)&#123;</span><br><span class="line">        <span class="comment">// 将未排序的数遍历已排序的数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> inner = <span class="number">0</span>; inner &lt;= outer <span class="number">-1</span>; inner++)&#123;</span><br><span class="line">            <span class="comment">// 如果未排序的数比已排序的数小，这里有个技巧，直接从前往后遍历，就可以直接将要插入的值用splice插入</span></span><br><span class="line">            <span class="keyword">if</span>(arr[outer] &lt; arr[inner])&#123;</span><br><span class="line">                <span class="comment">// 插入到已排序的、比它大的数的前面</span></span><br><span class="line">                arr.splice(inner, <span class="number">0</span>, arr[outer]);</span><br><span class="line">                <span class="comment">// 将其自身从未排序数组中删除，这里的outer + 1是因为，前面执行了添加，导致数组都整体往后移动一位，所以被插入的数组索引加一</span></span><br><span class="line">                arr.splice(outer + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
