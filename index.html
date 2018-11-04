@@ -254,6 +254,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/04/算法篇——选择排序/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/算法篇——选择排序/" itemprop="url">算法篇——选择排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-04T10:55:47+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CArray</span>(<span class="params">numElements</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore = [];</span><br><span class="line">    <span class="keyword">this</span>.pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.numElements = numElements;</span><br><span class="line">    <span class="keyword">this</span>.insert = insert;</span><br><span class="line">    <span class="keyword">this</span>.toString = toString;</span><br><span class="line">    <span class="keyword">this</span>.clear = clear;</span><br><span class="line">    <span class="keyword">this</span>.setData = setData;</span><br><span class="line">    <span class="keyword">this</span>.swap = swap;</span><br><span class="line">    <span class="keyword">this</span>.bubbleSort = bubbleSort;</span><br><span class="line">    <span class="keyword">this</span>.selectSort = selectSort;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numElements; ++i) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.numElements; ++i) &#123;</span><br><span class="line">            <span class="keyword">this</span>.dataStore[i] = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (<span class="keyword">this</span>.numElements + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">clear</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">this</span>.dataStore[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.pos++] = element;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> str = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length; ++i) &#123;</span><br><span class="line">            str += <span class="keyword">this</span>.dataStore[i] + <span class="string">' '</span>;</span><br><span class="line">            <span class="comment">// 每逢十个换行</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp; i % <span class="number">10</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                str += <span class="string">'\n'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, index1, index2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> temp = arr[index1];</span><br><span class="line">        arr[index1] = arr[index2];</span><br><span class="line">        arr[index2] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> numElements = <span class="keyword">this</span>.dataStore.length;</span><br><span class="line">        <span class="keyword">let</span> temp;</span><br><span class="line">        <span class="comment">// 外循环用于遍历数组中的每一项元素</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> outer = numElements; outer &gt;= <span class="number">2</span>; --outer) &#123;</span><br><span class="line">            <span class="comment">// 内循环用于比较元素</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> inner = <span class="number">0</span>; inner &lt;= outer - <span class="number">1</span>; ++inner) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.dataStore[inner] &gt; <span class="keyword">this</span>.dataStore[inner + <span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(<span class="keyword">this</span>.dataStore, inner, inner + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> min;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> outer = <span class="number">0</span>; outer &lt;= <span class="keyword">this</span>.dataStore.length - <span class="number">2</span>; ++outer) &#123;</span><br><span class="line">            min = outer;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> inner = outer + <span class="number">1</span>; inner &lt;= <span class="keyword">this</span>.dataStore.length - <span class="number">1</span>; ++inner) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.dataStore[inner] &lt; <span class="keyword">this</span>.dataStore[min]) &#123;</span><br><span class="line">                    swap(<span class="keyword">this</span>.dataStore, inner, min);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">let</span> numElements = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> myNums = <span class="keyword">new</span> CArray(numElements);</span><br><span class="line">myNums.setData();</span><br><span class="line"><span class="built_in">console</span>.log(myNums.toString());</span><br><span class="line">myNums.selectSort();</span><br><span class="line"><span class="built_in">console</span>.log(myNums.toString());</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/04/算法篇——冒泡排序/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1306,153 +1448,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/28/HTTP状态码301和302及URL劫持/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈泳仰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/28/HTTP状态码301和302及URL劫持/" itemprop="url">HTTP状态码301和302及URL劫持</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T21:54:29+08:00">
-                2018-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我们都知道HTTP状态码中3xx这系列的都表示重定向，今天这里想说的是301、302这两个状态码</p>
-<p>301，表示资源永久性移除到别的地方；302，表示资源暂时性移除到别的地方</p>
-<p>共同点是浏览器拿到服务器301或302的状态码之后，都会自动跳转到指定的URL</p>
-<p>不同点是遇到301时搜索引擎会抓取新内容，并换上新URL；遇到302时，因为其暂时性，搜索引擎会抓取新内容，保留了原来的URL</p>
-<p>当重定向使用的状态码是302暂时性移除时，搜索引擎认为这只是暂时性的，因此就执行的不是那么彻底，所以可能会发生URL劫持，从字面上理解，就是你的网站的URL被偷走了</p>
-<p>它的原理是这样的，A网站为自己做了一个重定向，指向B网站，此时当用户输入A网站的URL时，页面将跳转到B网站，用户看到的是B网站的内容；但可能存在一种情况，A网站的URL比较受到搜索引擎的青睐；B网站的URL出于各种原因，不受搜索引擎待见，结果就是用户浏览的是B网站的内容，显示的却是A网站的域名，也就是B网站的URL被A网站劫持了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1505,7 +1500,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
