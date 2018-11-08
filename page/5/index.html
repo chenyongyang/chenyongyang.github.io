@@ -73,7 +73,6 @@
 
 
 
-  <meta name="keywords" content="计算机网络,">
 
 
 
@@ -83,19 +82,13 @@
 
 
 
-
-<meta name="description" content="HTTPS概述HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。 HTTPS为什么会出现就是因为HTTP存在着以下这些问题：1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理 2、被伪装，客户端请求到的数据并一">
-<meta name="keywords" content="计算机网络">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HTTP权威指南学习笔记——HTTPS">
-<meta property="og:url" content="https://chenyongyang.github.io/2018/10/27/HTTP权威指南学习笔记——HTTPS/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的博客">
+<meta property="og:url" content="https://chenyongyang.github.io/page/5/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="HTTPS概述HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。 HTTPS为什么会出现就是因为HTTP存在着以下这些问题：1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理 2、被伪装，客户端请求到的数据并一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T03:16:18.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP权威指南学习笔记——HTTPS">
-<meta name="twitter:description" content="HTTPS概述HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。 HTTPS为什么会出现就是因为HTTP存在着以下这些问题：1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理 2、被伪装，客户端请求到的数据并一">
+<meta name="twitter:title" content="我的博客">
 
 
 
@@ -125,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/2018/10/27/HTTP权威指南学习笔记——HTTPS/">
+  <link rel="canonical" href="https://chenyongyang.github.io/page/5/">
 
 
 
 
 
-  <title>HTTP权威指南学习笔记——HTTPS | 我的博客</title>
+  <title>我的博客</title>
   
 
 
@@ -150,7 +143,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <a href="https://github.com/chenyongyang" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -245,9 +239,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -260,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/10/27/HTTP权威指南学习笔记——HTTPS/">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2017/10/30/Hexo基本操作/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈泳仰">
@@ -277,7 +271,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP权威指南学习笔记——HTTPS</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/30/Hexo基本操作/" itemprop="url">Hexo基本操作</a></h1>
         
 
         <div class="post-meta">
@@ -289,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T14:10:17+08:00">
-                2018-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T08:00:00+08:00">
+                2017-10-30
               </time>
             
 
@@ -312,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -349,41 +345,24 @@
       
 
       
-        <h3 id="HTTPS概述"><a href="#HTTPS概述" class="headerlink" title="HTTPS概述"></a>HTTPS概述</h3><p>HTTPS的主要原理是，它在将HTTP报文发送给TCP之前，先发给一个安全层，对报文进行加密处理。现在HTTP的安全层是通过SSL和TLS来实现的，一般都统称为SSL。</p>
-<h3 id="HTTPS为什么会出现"><a href="#HTTPS为什么会出现" class="headerlink" title="HTTPS为什么会出现"></a>HTTPS为什么会出现</h3><p>就是因为HTTP存在着以下这些问题：<br>1、被监听，因为HTTP传输的数据是明文，如果中途被劫持了，类似于密码之类的信息就不安全；对此HTTPS对数据进行加密处理</p>
-<p>2、被伪装，客户端请求到的数据并一定来源于合法的地址；对此HTTPS采用了数字证书</p>
-<p>3、被篡改，HTTP在传输过程中，数据可以随时被改动；对此HTTPS对数据进行摘要，可以感知数据变动</p>
-<p>正是出于这些不安全因素，HTTPS应运而生</p>
-<h3 id="HTTPS方案"><a href="#HTTPS方案" class="headerlink" title="HTTPS方案"></a>HTTPS方案</h3><p>一般通过URL来告知Web服务器执行HTTP安全协议版本，也就是URL方案的前缀为http或https</p>
-<p>如果URL走的是HTTPS，客户端会开启443默认端口来连接服务器，进行握手过程，同服务器交换SSL安全参数，附上加密的HTTP命令</p>
-<h3 id="安全传输建立流程"><a href="#安全传输建立流程" class="headerlink" title="安全传输建立流程"></a>安全传输建立流程</h3><p>客户端发送一个HTTPS方案的请求之后，客户端会通过443端口与服务器建立连接，TCP连接建立以后，客户端和服务器会初始化SSL层，沟通加密参数，并交换密钥，握手完成后，SSL初始化完成，客户端发送请求报文给安全层。</p>
-<h3 id="如何保障安全"><a href="#如何保障安全" class="headerlink" title="如何保障安全"></a>如何保障安全</h3><p>对称加密、非对称加密、数字证书</p>
-<h3 id="加密的HTTPS事务流程"><a href="#加密的HTTPS事务流程" class="headerlink" title="加密的HTTPS事务流程"></a>加密的HTTPS事务流程</h3><ul>
-<li>建立到服务器443端口的TCP连接</li>
-<li>双方进行SSL安全参数握手</li>
-<li>在SSL发送HTTP请求，在TCP发送已经加密的请求</li>
-<li>在SSL发送HTTP响应，在TCP发送已经加密的响应</li>
-<li>SSL关闭通知</li>
-<li>TCP关闭连接</li>
+        
+          
+            <p>写文章</p>
+<ul>
+<li>hexo new 文章标题</li>
 </ul>
-<h3 id="SSL安全参数握手流程"><a href="#SSL安全参数握手流程" class="headerlink" title="SSL安全参数握手流程"></a>SSL安全参数握手流程</h3><ul>
-<li>客户端向服务器发送可供选择的密码，并请求证书</li>
-<li>服务器发送选中密码和证书</li>
-<li>客户端发送保密信息，双方生成密钥</li>
-<li>双方互相告知，开始加密过程</li>
+<p>预览效果</p>
+<ul>
+<li>hexo s 开启hexo server 在localhost调试</li>
 </ul>
-<h3 id="站点证书的有效性校验"><a href="#站点证书的有效性校验" class="headerlink" title="站点证书的有效性校验"></a>站点证书的有效性校验</h3><ul>
-<li>日期检测</li>
-<li>签名颁发者可信度检测</li>
-<li>签名检测</li>
-<li>站点身份检测</li>
+<p>发布到github page</p>
+<ul>
+<li>hexo clean 清除历史数据</li>
+<li>hexo d -g 先生成再发布</li>
 </ul>
-<h3 id="SSL握手简化版流程"><a href="#SSL握手简化版流程" class="headerlink" title="SSL握手简化版流程"></a>SSL握手简化版流程</h3><p>客户端发送HTTPS请求给服务器端</p>
-<p>服务器端选择合适的加密协议后，返回数字证书及公钥</p>
-<p>客户端验证数字证书是否合格，如果不合格则提示证书有问题；如果合格；则随机生成对称密钥，使用数字证书上的公钥对其进行加密，发送给服务器端</p>
-<p>服务器端使用私钥对证书进行解密，得到客户端的对称密钥，对要返回的内容用对称私钥加密，发送给客户端</p>
-<p>客户端通过对称私钥解密，得到数据，握手结束</p>
 
+          
+        
       
     </div>
     
@@ -398,40 +377,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/10/27/前端性能优化初探/" rel="next" title="前端性能优化初探">
-                <i class="fa fa-chevron-left"></i> 前端性能优化初探
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/27/探究vue双向绑定原理/" rel="prev" title="探究vue双向绑定原理">
-                探究vue双向绑定原理 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -441,11 +394,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
@@ -453,10 +409,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -477,17 +429,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -565,22 +508,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS概述"><span class="nav-number">1.</span> <span class="nav-text">HTTPS概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS为什么会出现"><span class="nav-number">2.</span> <span class="nav-text">HTTPS为什么会出现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS方案"><span class="nav-number">3.</span> <span class="nav-text">HTTPS方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全传输建立流程"><span class="nav-number">4.</span> <span class="nav-text">安全传输建立流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保障安全"><span class="nav-number">5.</span> <span class="nav-text">如何保障安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密的HTTPS事务流程"><span class="nav-number">6.</span> <span class="nav-text">加密的HTTPS事务流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL安全参数握手流程"><span class="nav-number">7.</span> <span class="nav-text">SSL安全参数握手流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#站点证书的有效性校验"><span class="nav-number">8.</span> <span class="nav-text">站点证书的有效性校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL握手简化版流程"><span class="nav-number">9.</span> <span class="nav-text">SSL握手简化版流程</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -715,10 +642,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
