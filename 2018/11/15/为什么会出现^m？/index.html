@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="这个问题还得从编程环境说起 公司是在mac系统下编码，我自己的电脑是windows系统 当我想着把公司的项目带回学校自己做时，并没有发现任何问题 但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了 这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-15T14:02:23.104Z">
+<meta property="og:updated_time" content="2018-11-22T07:40:47.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么会出现^m？">
 <meta name="twitter:description" content="这个问题还得从编程环境说起 公司是在mac系统下编码，我自己的电脑是windows系统 当我想着把公司的项目带回学校自己做时，并没有发现任何问题 但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了 这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提">
@@ -358,6 +358,8 @@
 <p>通过vim编辑器打开，我们也可以看到每一行末尾都有^m这个标记</p>
 <p>所以解决问题的方法就是去掉文件每一行末尾的^m标记</p>
 <p>方式也有很多，常见的有dos2unix、用vim命令来匹配字符然后去掉</p>
+<p>一行命令解决的事，绝不用两行</p>
+<p>find js/ -name “*.js” | xargs dos2unix</p>
 
       
     </div>
