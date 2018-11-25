@@ -73,7 +73,6 @@
 
 
 
-  <meta name="keywords" content="算法,">
 
 
 
@@ -83,19 +82,17 @@
 
 
 
-
-<meta name="description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
-<meta name="keywords" content="算法">
+<meta name="description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法排序篇——插入排序">
-<meta property="og:url" content="https://chenyongyang.github.io/2018/11/04/算法排序篇——插入排序/index.html">
+<meta property="og:title" content="不要写重复代码">
+<meta property="og:url" content="https://chenyongyang.github.io/2018/11/25/不要写重复代码/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
+<meta property="og:description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-04T08:58:31.777Z">
+<meta property="og:updated_time" content="2018-11-25T06:54:30.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法排序篇——插入排序">
-<meta name="twitter:description" content="123456789101112131415function insertSort(arr)&amp;#123;    // 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较    for(let outer = 1; outer &amp;lt;= arr.length -1; outer++)&amp;#123;        // 将未排序的数遍历已排序的数组">
+<meta name="twitter:title" content="不要写重复代码">
+<meta name="twitter:description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
 
 
 
@@ -125,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/2018/11/04/算法排序篇——插入排序/">
+  <link rel="canonical" href="https://chenyongyang.github.io/2018/11/25/不要写重复代码/">
 
 
 
 
 
-  <title>算法排序篇——插入排序 | 我的博客</title>
+  <title>不要写重复代码 | 我的博客</title>
   
 
 
@@ -260,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/04/算法排序篇——插入排序/">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/25/不要写重复代码/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈泳仰">
@@ -277,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法排序篇——插入排序</h1>
+          <h1 class="post-title" itemprop="name headline">不要写重复代码</h1>
         
 
         <div class="post-meta">
@@ -289,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-04T15:05:05+08:00">
-                2018-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T14:49:09+08:00">
+                2018-11-25
               </time>
             
 
@@ -299,28 +296,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -349,7 +324,11 @@
       
 
       
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 假设第一个数是已排序的，那么未排序就从第二个数开始，依次从未排序数组中取值，到已排序数组中比较</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> outer = <span class="number">1</span>; outer &lt;= arr.length <span class="number">-1</span>; outer++)&#123;</span><br><span class="line">        <span class="comment">// 将未排序的数遍历已排序的数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> inner = <span class="number">0</span>; inner &lt;= outer <span class="number">-1</span>; inner++)&#123;</span><br><span class="line">            <span class="comment">// 如果未排序的数比已排序的数小，这里有个技巧，直接从前往后遍历，就可以直接将要插入的值用splice插入</span></span><br><span class="line">            <span class="keyword">if</span>(arr[outer] &lt; arr[inner])&#123;</span><br><span class="line">                <span class="comment">// 插入到已排序的、比它大的数的前面</span></span><br><span class="line">                arr.splice(inner, <span class="number">0</span>, arr[outer]);</span><br><span class="line">                <span class="comment">// 将其自身从未排序数组中删除，这里的outer + 1是因为，前面执行了添加，导致数组都整体往后移动一位，所以被插入的数组索引加一</span></span><br><span class="line">                arr.splice(outer + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>在项目开发的过程中，我们会遇到很多编写重复代码的场景</p>
+<p>那应该如何解决呢？</p>
+<p>首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染</p>
+<p>多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来</p>
+<p>能提取就提取，能封装就封装，别到处都是重复的代码</p>
 
       
     </div>
@@ -365,12 +344,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-        </div>
-      
 
       
       
@@ -380,8 +353,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/04/算法排序篇——选择排序/" rel="next" title="算法排序篇——选择排序">
-                <i class="fa fa-chevron-left"></i> 算法排序篇——选择排序
+              <a href="/2018/11/22/git拉取远程分支到本地/" rel="next" title="git 拉取远程分支到本地">
+                <i class="fa fa-chevron-left"></i> git 拉取远程分支到本地
               </a>
             
           </div>
@@ -389,10 +362,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/04/算法排序篇——快速排序/" rel="prev" title="算法排序篇——快速排序">
-                算法排序篇——快速排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
