@@ -73,6 +73,7 @@
 
 
 
+  <meta name="keywords" content="性能优化,">
 
 
 
@@ -82,13 +83,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的博客">
-<meta property="og:url" content="https://chenyongyang.github.io/archives/2017/index.html">
+
+<meta name="description" content="在前端开发中，UI渲染一直都是重头戏。 我们可以回想一下，通常我们将一个DOM节点渲染到页面上，通常采用的方式有以下两种  innerHTML appendChild  这两种DOM渲染的方式之间的对比，网络上有很多分析的文章，这里不再赘述 总的来说，两者对性能的影响差异不大，可以忽略不计 既然对性能影响不大，那我们还讨论什么呢？ 我们在开发的时候，通常遇到这个场景，后端返回json格式的数据，前">
+<meta name="keywords" content="性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化之虚拟列表">
+<meta property="og:url" content="https://chenyongyang.github.io/2018/11/27/性能优化之虚拟列表/index.html">
 <meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="在前端开发中，UI渲染一直都是重头戏。 我们可以回想一下，通常我们将一个DOM节点渲染到页面上，通常采用的方式有以下两种  innerHTML appendChild  这两种DOM渲染的方式之间的对比，网络上有很多分析的文章，这里不再赘述 总的来说，两者对性能的影响差异不大，可以忽略不计 既然对性能影响不大，那我们还讨论什么呢？ 我们在开发的时候，通常遇到这个场景，后端返回json格式的数据，前">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-27T14:01:08.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客">
+<meta name="twitter:title" content="性能优化之虚拟列表">
+<meta name="twitter:description" content="在前端开发中，UI渲染一直都是重头戏。 我们可以回想一下，通常我们将一个DOM节点渲染到页面上，通常采用的方式有以下两种  innerHTML appendChild  这两种DOM渲染的方式之间的对比，网络上有很多分析的文章，这里不再赘述 总的来说，两者对性能的影响差异不大，可以忽略不计 既然对性能影响不大，那我们还讨论什么呢？ 我们在开发的时候，通常遇到这个场景，后端返回json格式的数据，前">
 
 
 
@@ -118,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/archives/2017/">
+  <link rel="canonical" href="https://chenyongyang.github.io/2018/11/27/性能优化之虚拟列表/">
 
 
 
 
 
-  <title>归档 | 我的博客</title>
+  <title>性能优化之虚拟列表 | 我的博客</title>
   
 
 
@@ -143,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/chenyongyang" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -239,71 +246,188 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 41 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/27/性能优化之虚拟列表/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/10/30/Hexo基本操作/" itemprop="url">
-              
-                <span itemprop="name">Hexo基本操作</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">性能优化之虚拟列表</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-30T08:00:00+08:00" content="2017-10-30">
-          10-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T21:39:04+08:00">
+                2018-11-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>在前端开发中，UI渲染一直都是重头戏。</p>
+<p>我们可以回想一下，通常我们将一个DOM节点渲染到页面上，通常采用的方式有以下两种</p>
+<ul>
+<li>innerHTML</li>
+<li>appendChild</li>
+</ul>
+<p>这两种DOM渲染的方式之间的对比，网络上有很多分析的文章，这里不再赘述</p>
+<p>总的来说，两者对性能的影响差异不大，可以忽略不计</p>
+<p>既然对性能影响不大，那我们还讨论什么呢？</p>
+<p>我们在开发的时候，通常遇到这个场景，后端返回json格式的数据，前端拿到数据自然是渲染，当然在渲染前可能会作一些处理</p>
+<p>如果数据量小的话，那还好办直接对数据进行循环遍历就是了；问题是当返回的数据量很大时，我们该怎么办？</p>
+<p>特别是在移动端，对于性能的要求比较高，如果将大量的数据一次性渲染出来，很可能会出现卡死、白屏、甚至浏览器会崩溃</p>
+<p>我们常见的做法是延迟加载，或叫无限滚动，原理也就是根据滚动条滚动的距离，来判断用户浏览当前网页的位置，监听滚动事件，从而当滚动条到达合适的距离，触发回调向后端发起请求，后端返回数据后再渲染出来</p>
+<p>这种解决问题的思路是从数据入手，也就是对数据进行几次分割，每次只是请求部分数据，这样渲染的压力就减小很多</p>
+<p>传统PC端的分页也是相似的原理，区别只在于分页会导致页面全部刷新，而无限滚动只是局部刷新，后者用户体验更好</p>
+<p>我们今天的主角：虚拟列表。它所要解决的问题也是前面提到的大量DOM渲染开销大的问题，区别于上面的解决手段，它的思路是从UI入手</p>
+<p>它的原理是这样的：当我们在浏览网页时，其实看到的只是浏览器视窗范围的内容，超出视窗的内容我们是看不到的</p>
+<p>那既然这样，我们在渲染DOM时，就只需要渲染用户当前看的部分，其他的都可以不用渲染了</p>
+<p>说到这里，我们就知道要实现虚拟列表，很关键的一点就是高度问题。这里的高度包括浏览器视窗的高度，列表每一项的高度。根据这些高度，我们才可以判断究竟要渲染列表中的哪一项到哪一项。</p>
+<p>当时要用到公司的业务中，肯定需要借助市面上成熟的类库，因为技术栈是React，所以这里以react-virtualized为例，来分析其具体技术实现</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/25/不要写重复代码/" rel="next" title="不要写重复代码">
+                <i class="fa fa-chevron-left"></i> 不要写重复代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -311,6 +435,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -544,6 +672,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
