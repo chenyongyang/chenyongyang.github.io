@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="vim,">
+  <meta name="keywords" content="数据结构,">
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="这个问题还得从编程环境说起 公司是在mac系统下编码，我自己的电脑是windows系统 当我想着把公司的项目带回学校自己做时，并没有发现任何问题 但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了 这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提">
-<meta name="keywords" content="vim">
+<meta name="description" content="散列后的数据可以快速插入或取用，散列使用的数据结构是散列表 适合插入、删除、取用数据；不适合查找 更现实的目标是：让散列函数尽量将键均匀地映射到数组中 两个键映射到同一个值的情况叫做碰撞 首先用一个HashTable的类来表示散列表，我们可以通过这个类来向散列插入新数据、从散列中读取数据、显示散列中数据分布、定义如何去计算散列值1234567function HashTable() &amp;#123;">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么会出现^m？">
-<meta property="og:url" content="https://chenyongyang.github.io/2018/11/15/为什么会出现^m？/index.html">
+<meta property="og:title" content="数据结构篇——散列">
+<meta property="og:url" content="https://chenyongyang.github.io/2018/12/02/数据结构篇——散列/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="这个问题还得从编程环境说起 公司是在mac系统下编码，我自己的电脑是windows系统 当我想着把公司的项目带回学校自己做时，并没有发现任何问题 但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了 这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提">
+<meta property="og:description" content="散列后的数据可以快速插入或取用，散列使用的数据结构是散列表 适合插入、删除、取用数据；不适合查找 更现实的目标是：让散列函数尽量将键均匀地映射到数组中 两个键映射到同一个值的情况叫做碰撞 首先用一个HashTable的类来表示散列表，我们可以通过这个类来向散列插入新数据、从散列中读取数据、显示散列中数据分布、定义如何去计算散列值1234567function HashTable() &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-22T07:40:47.355Z">
+<meta property="og:updated_time" content="2018-12-02T13:31:18.574Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么会出现^m？">
-<meta name="twitter:description" content="这个问题还得从编程环境说起 公司是在mac系统下编码，我自己的电脑是windows系统 当我想着把公司的项目带回学校自己做时，并没有发现任何问题 但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了 这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提">
+<meta name="twitter:title" content="数据结构篇——散列">
+<meta name="twitter:description" content="散列后的数据可以快速插入或取用，散列使用的数据结构是散列表 适合插入、删除、取用数据；不适合查找 更现实的目标是：让散列函数尽量将键均匀地映射到数组中 两个键映射到同一个值的情况叫做碰撞 首先用一个HashTable的类来表示散列表，我们可以通过这个类来向散列插入新数据、从散列中读取数据、显示散列中数据分布、定义如何去计算散列值1234567function HashTable() &amp;#123;">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/2018/11/15/为什么会出现^m？/">
+  <link rel="canonical" href="https://chenyongyang.github.io/2018/12/02/数据结构篇——散列/">
 
 
 
 
 
-  <title>为什么会出现^m？ | 我的博客</title>
+  <title>数据结构篇——散列 | 我的博客</title>
   
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/15/为什么会出现^m？/">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/12/02/数据结构篇——散列/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈泳仰">
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">为什么会出现^m？</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构篇——散列</h1>
         
 
         <div class="post-meta">
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T21:50:03+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T15:03:22+08:00">
+                2018-12-02
               </time>
             
 
@@ -312,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/vim/" itemprop="url" rel="index">
-                    <span itemprop="name">vim</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -349,17 +349,13 @@
       
 
       
-        <p>这个问题还得从编程环境说起</p>
-<p>公司是在mac系统下编码，我自己的电脑是windows系统</p>
-<p>当我想着把公司的项目带回学校自己做时，并没有发现任何问题</p>
-<p>但是当第二天到了公司，准备将代码提交上去时，惊奇地发现所有在学校改过的文件，git diff都显示修改过，而事实上我只是改动了一两行而已，git diff显示的是整个文件都被改动过了</p>
-<p>这样就会导致一个问题，git diff变得没有意义了；同时以后同事要提交代码，都会出现冲突，这个问题不可小视</p>
-<p>通过查找资料，最终得知是换行符的不同导致的，简单讲就是windows系统的换行符和mac系统的换行符不一样</p>
-<p>通过vim编辑器打开，我们也可以看到每一行末尾都有^m这个标记</p>
-<p>所以解决问题的方法就是去掉文件每一行末尾的^m标记</p>
-<p>方式也有很多，常见的有dos2unix、用vim命令来匹配字符然后去掉</p>
-<p>一行命令解决的事，绝不用两行</p>
-<p>find js/ -name “*.js” | xargs dos2unix</p>
+        <p>散列后的数据可以快速插入或取用，散列使用的数据结构是散列表</p>
+<p>适合插入、删除、取用数据；不适合查找</p>
+<p>更现实的目标是：让散列函数尽量将键均匀地映射到数组中</p>
+<p>两个键映射到同一个值的情况叫做碰撞</p>
+<p>首先用一个HashTable的类来表示散列表，我们可以通过这个类来向散列插入新数据、从散列中读取数据、显示散列中数据分布、定义如何去计算散列值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.table = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">137</span>) <span class="comment">// 这里数组的长度推荐是质数</span></span><br><span class="line">    <span class="keyword">this</span>.simpleHash = simpleHash</span><br><span class="line">    <span class="keyword">this</span>.showDistro = showDistro</span><br><span class="line">    <span class="keyword">this</span>.put = put</span><br><span class="line">    <span class="keyword">this</span>.get = get</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>散列函数是这个过程的重点，它相当于一个信息压缩函数，将键（通常是字符串的形式）压缩成一个值（通常为数值形式）</p>
+<p>散列函数定义如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleHash</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.length; ++i)&#123;</span><br><span class="line">        total += data.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total % <span class="keyword">this</span>.table.length</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">put</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> pos = <span class="keyword">this</span>.simpleHash(data)</span><br><span class="line">    <span class="keyword">this</span>.table[pos] = data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showDistro</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.table.length; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.table[i] != <span class="literal">undefined</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i + <span class="string">":"</span> + <span class="keyword">this</span>.table[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">let</span> cities = [<span class="string">'shenzhen'</span>, <span class="string">'beijing'</span>, <span class="string">'guangzhou'</span>, <span class="string">'shanghai'</span>]</span><br><span class="line"><span class="keyword">let</span> hTable = <span class="keyword">new</span> HashTable()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cities.length; ++i)&#123;</span><br><span class="line">    hTable.put(cities[i])</span><br><span class="line">&#125;</span><br><span class="line">hTable.showDistro()</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -377,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vim/" rel="tag"># vim</a>
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
         </div>
       
@@ -390,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/10/数据结构篇——字典/" rel="next" title="数据结构篇——字典">
-                <i class="fa fa-chevron-left"></i> 数据结构篇——字典
+              <a href="/2018/12/01/React组件——下拉刷新、上拉加载/" rel="next" title="React组件——下拉刷新、上拉加载">
+                <i class="fa fa-chevron-left"></i> React组件——下拉刷新、上拉加载
               </a>
             
           </div>
@@ -399,10 +395,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/22/git rebase常见坑点/" rel="prev" title="git rebase常见坑点">
-                git rebase常见坑点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
