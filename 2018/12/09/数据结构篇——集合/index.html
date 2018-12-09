@@ -73,6 +73,7 @@
 
 
 
+  <meta name="keywords" content="数据结构,">
 
 
 
@@ -82,17 +83,19 @@
 
 
 
-<meta name="description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
+
+<meta name="description" content="集合中的元素被称为成员，这种数据结构有两个特点：  集合内的成员是无序的 集合内的成员不可重复  在这里我们用数组来实现集合Set类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不要写重复代码">
-<meta property="og:url" content="https://chenyongyang.github.io/2018/11/25/不要写重复代码/index.html">
+<meta property="og:title" content="数据结构篇——集合">
+<meta property="og:url" content="https://chenyongyang.github.io/2018/12/09/数据结构篇——集合/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
+<meta property="og:description" content="集合中的元素被称为成员，这种数据结构有两个特点：  集合内的成员是无序的 集合内的成员不可重复  在这里我们用数组来实现集合Set类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-25T06:54:30.243Z">
+<meta property="og:updated_time" content="2018-12-09T06:31:46.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不要写重复代码">
-<meta name="twitter:description" content="在项目开发的过程中，我们会遇到很多编写重复代码的场景 那应该如何解决呢？ 首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染 多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来 能提取就提取，能封装就封装，别到处都是重复的代码">
+<meta name="twitter:title" content="数据结构篇——集合">
+<meta name="twitter:description" content="集合中的元素被称为成员，这种数据结构有两个特点：  集合内的成员是无序的 集合内的成员不可重复  在这里我们用数组来实现集合Set类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyongyang.github.io/2018/11/25/不要写重复代码/">
+  <link rel="canonical" href="https://chenyongyang.github.io/2018/12/09/数据结构篇——集合/">
 
 
 
 
 
-  <title>不要写重复代码 | 我的博客</title>
+  <title>数据结构篇——集合 | 我的博客</title>
   
 
 
@@ -257,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/25/不要写重复代码/">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/12/09/数据结构篇——集合/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈泳仰">
@@ -274,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">不要写重复代码</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构篇——集合</h1>
         
 
         <div class="post-meta">
@@ -286,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T14:49:09+08:00">
-                2018-11-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-09T13:52:54+08:00">
+                2018-12-09
               </time>
             
 
@@ -296,6 +299,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -324,11 +349,12 @@
       
 
       
-        <p>在项目开发的过程中，我们会遇到很多编写重复代码的场景</p>
-<p>那应该如何解决呢？</p>
-<p>首先想到的是循环，可以将要渲染的“数据”提取出来，用数组这种数据结构来存储（只是为了更好地遍历），然后使用map等方法进行渲染</p>
-<p>多处用到循环，每个循环的结构好像都差不多，那我们就可以考虑将循环用函数封装起来</p>
-<p>能提取就提取，能封装就封装，别到处都是重复的代码</p>
+        <p>集合中的元素被称为成员，这种数据结构有两个特点：</p>
+<ul>
+<li>集合内的成员是无序的</li>
+<li>集合内的成员不可重复</li>
+</ul>
+<p>在这里我们用数组来实现集合Set类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Set</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore = []</span><br><span class="line">    <span class="keyword">this</span>.add = add</span><br><span class="line">    <span class="keyword">this</span>.remove = remove</span><br><span class="line">    <span class="keyword">this</span>.size = size</span><br><span class="line">    <span class="keyword">this</span>.union = union</span><br><span class="line">    <span class="keyword">this</span>.intersect = intersect</span><br><span class="line">    <span class="keyword">this</span>.subset = subset</span><br><span class="line">    <span class="keyword">this</span>.difference = difference</span><br><span class="line">    <span class="keyword">this</span>.show = show</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.dataStore.indexOf(data) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore.push(data)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> pos = <span class="keyword">this</span>.dataStore.indexOf(data)</span><br><span class="line">    <span class="keyword">if</span>(pos &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore.splice(pos, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断一个元素是否在集合中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">contains</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.dataStore.indexOf(data)&gt;<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">union</span>(<span class="params">set</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> tempSet = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = o; i &lt; <span class="keyword">this</span>.dataStore.length; i++)&#123;</span><br><span class="line">        tempSet.add(<span class="keyword">this</span>.dataStore[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; set.dataStore.length; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!tempSet.contains(set.dataStore[i]))&#123;</span><br><span class="line">            tempSet.add(set.dataStore[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tempSet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">intersect</span>(<span class="params">set</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> tempSet = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(set.contains(<span class="keyword">this</span>.dataStore[i]))&#123;</span><br><span class="line">            tempSet.dataStore.push(<span class="keyword">this</span>.dataStore[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tempSet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">subset</span>(<span class="params">set</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.size() &gt; set.size())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> <span class="keyword">this</span>.dataStore)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!set.contains(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -344,6 +370,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
 
       
       
@@ -353,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/22/git拉取远程分支到本地/" rel="next" title="git 拉取远程分支到本地">
-                <i class="fa fa-chevron-left"></i> git 拉取远程分支到本地
+              <a href="/2018/12/02/数据结构篇——散列/" rel="next" title="数据结构篇——散列">
+                <i class="fa fa-chevron-left"></i> 数据结构篇——散列
               </a>
             
           </div>
@@ -362,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/27/性能优化之虚拟列表/" rel="prev" title="性能优化之虚拟列表">
-                性能优化之虚拟列表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
