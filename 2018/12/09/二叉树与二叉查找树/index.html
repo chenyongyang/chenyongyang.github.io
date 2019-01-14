@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="什么是树？  树由一组以边连接的节点组成  一棵树最上面的节点称为根节点 一个节点下面有多个节点，那这个节点被称为父节点 没有任何子节点的节点称为叶子节点 从一个节点到另一个节点的这一组边被称为路径 以某种顺序访问树中所有节点称为树的遍历 树的层数就是树的深度 每一个节点都有一个与之相关的值，这个值被称为键 二叉树是一种特殊的树，它的特点是子节点的个数不超过两个 二叉查找树是一种特殊的二叉树，特点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-09T13:23:53.884Z">
+<meta property="og:updated_time" content="2018-12-10T13:12:19.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树与二叉查找树">
 <meta name="twitter:description" content="什么是树？  树由一组以边连接的节点组成  一棵树最上面的节点称为根节点 一个节点下面有多个节点，那这个节点被称为父节点 没有任何子节点的节点称为叶子节点 从一个节点到另一个节点的这一组边被称为路径 以某种顺序访问树中所有节点称为树的遍历 树的层数就是树的深度 每一个节点都有一个与之相关的值，这个值被称为键 二叉树是一种特殊的树，它的特点是子节点的个数不超过两个 二叉查找树是一种特殊的二叉树，特点">
@@ -364,7 +364,8 @@
 <p>二叉查找树是一种特殊的二叉树，特点是较小的值保存在左节点，较大的值保存在右节点</p>
 <p>无论是二叉树还是二叉查找树，都是由节点组成的，因此我们首先定义Node节点类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">data, left, right</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.left = left</span><br><span class="line">    <span class="keyword">this</span>.right = right</span><br><span class="line">    <span class="keyword">this</span>.show = show</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>接下来就可以定义一棵二叉查找树了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.insert = insert</span><br><span class="line">    <span class="keyword">this</span>.inOrder = inOrder</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> node = <span class="keyword">new</span> Node(data, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.root == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.root = node</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> current = <span class="keyword">this</span>.root</span><br><span class="line">        <span class="keyword">let</span> parent</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            parent = current</span><br><span class="line">            <span class="keyword">if</span>(data &lt; current.data)&#123;</span><br><span class="line">                current = current.left</span><br><span class="line">                <span class="keyword">if</span>(current == <span class="literal">null</span>)&#123;</span><br><span class="line">                    parent.left = node</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                current = current.right</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.right = node</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>至此，我们已经能够向二叉树中插入节点了</p>
+<p>至此，我们已经能够向二叉树中插入节点了，我们还需要能够遍历这棵二叉树（以一定的顺序来显示节点）</p>
+<p>遍历二叉树有三种方式：中序，先序，后序。其中，中序按节点键值的升序来遍历；先序则是先访问根节点，再访问左子树和右子树；后序则先访问叶子节点，然后是左子树、右子树、根节点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中序代码如下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span></span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -404,6 +405,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/14/回归/" rel="prev" title="回归">
+                回归 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -473,7 +478,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +553,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
