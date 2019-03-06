@@ -811,6 +811,11 @@
 <p>Promise</p>
 <ul>
 <li>有异步操作时，就要用到promise来封装</li>
+<li>reject方法等同于抛出错误</li>
+<li>已经resolve了，就不能抛出错误了</li>
+<li>then方法中的第二个参数定义的是reject状态的回调函数，但是一般不这么做，一般是将promise所产生的错误统一由catch方法来捕获，因为promise的错误具有冒泡性质，用catch可以捕获then方法执行中的错误，类似于try…catch…</li>
+<li>finally方法意味着无论如何，最后都会执行它，比如关掉服务器</li>
+<li>将多个promise实例，包装成一个新的promise实例</li>
 </ul>
 
           
