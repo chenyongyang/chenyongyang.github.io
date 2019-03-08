@@ -816,6 +816,9 @@
 <li>then方法中的第二个参数定义的是reject状态的回调函数，但是一般不这么做，一般是将promise所产生的错误统一由catch方法来捕获，因为promise的错误具有冒泡性质，用catch可以捕获then方法执行中的错误，类似于try…catch…</li>
 <li>finally方法意味着无论如何，最后都会执行它，比如关掉服务器</li>
 <li>将多个promise实例，包装成一个新的promise实例</li>
+<li>resolve方法将现有对象转为promise对象</li>
+<li>reject类似于throw，是用来抛出错误的；catch是用来处理错误</li>
+<li>如果在 then 的第一个函数里抛出了异常，后面的 catch 能捕获到，而第二个函数捕获不到</li>
 </ul>
 
           
