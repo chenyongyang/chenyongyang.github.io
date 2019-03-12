@@ -325,23 +325,51 @@
       
         
           
-            <p>json是一种数据格式</p>
-<p>jsonp是一种数据调用格式，带callback的json就是jsonp，即利用<script>标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个<script>元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。</p>
-<p>主要是利用了html标签的src属性没有同源限制，也就是支持跨域</p>
-<p>xss csrf</p>
-<p>domready onroad</p>
-<p>首先要清楚dom文档加载的步骤为：1.解析html结构；2.加载外部脚本和样式表文件；3解析并执行脚本；4.dom树构建完成；5.加载图片等外部文件；6.页面加载完毕。domready（也叫DOMContentLoaded ），在第4步完成后触发；图片onload是在第5步完成后触发；页面onload是第6步完成后触发。由此可见三者执行顺序为：domready→图片load→页面load。</p>
-<p>domready和onload事件区别;<br>前者：在DOM文档结构准备完毕后就可以对DOM进行操作；后者：整个document文档（包括图片等加载信息)加载完成后才能对DOM进行操作。</p>
-<p>关键区别就在于后者需要等待图片等资源加载完毕后才执行</p>
-<p>捕获 冒泡</p>
-<p>dom2级事件</p>
-<p>作用域链 定义跟执行时</p>
-<p>事件代理</p>
-<p>ajax post请求</p>
-<p>异步script加载方式</p>
-<p>基本数据类型 复杂数据类型</p>
-<p>内存泄漏</p>
-</script></p>
+            <ul>
+<li><p>json jsonp</p>
+<ul>
+<li>json是一种数据格式；</li>
+<li>jsonp是一种数据调用格式，带callback的json就是jsonp，即利用script标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。主要是利用了html标签的src属性没有同源限制，也就是支持跨域</li>
+</ul>
+</li>
+<li><p>domready onroad</p>
+<ul>
+<li>首先要清楚dom文档加载的步骤为：1.解析html结构；2.加载外部脚本和样式表文件；3解析并执行脚本；4.dom树构建完成；5.加载图片等外部文件；6.页面加载完毕。domready（也叫DOMContentLoaded ），在第4步完成后触发；图片onload是在第5步完成后触发；页面onload是第6步完成后触发。由此可见三者执行顺序为：domready→图片load→页面load。</li>
+<li>domready和onload事件区别，前者：在DOM文档结构准备完毕后就可以对DOM进行操作；后者：整个document文档（包括图片等加载信息)加载完成后才能对DOM进行操作。关键区别就在于后者需要等待图片等资源加载完毕后才执行</li>
+</ul>
+</li>
+<li><p>js事件（捕获 冒泡）</p>
+<ul>
+<li>dom2级事件</li>
+<li>事件流：从页面接收事件的顺序，主要分为事件冒泡流和事件捕获流</li>
+<li>事件冒泡：事件从嵌套层次最深的最具体的元素接收，然后逐级向上传播到不具体的节点；事件捕获则反之</li>
+<li>三个阶段：捕获阶段、目标阶段、冒泡阶段</li>
+<li><p>事件处理程序：dom0级、dom2级：addEventListener、removeEventListener</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>true代表在捕获时调用，false代表在冒泡时调用，这样可以添加多个事件处理程序</p>
+</li>
+<li>一般都是将事件处理程序添加到冒泡阶段，兼容性更好</li>
+<li>事件委托（事件代理）</li>
+</ul>
+</li>
+<li><p>作用域链 定义跟执行时</p>
+</li>
+<li><p>原生ajax post请求</p>
+</li>
+<li><p>异步script加载方式</p>
+<ul>
+<li>defer</li>
+<li>js创建script标签</li>
+</ul>
+</li>
+<li><p>基本数据类型 复杂数据类型</p>
+</li>
+<li><p>内存泄漏</p>
+</li>
+<li><p>xss csrf</p>
+</li>
+</ul>
+
           
         
       
