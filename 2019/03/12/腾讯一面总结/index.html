@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp，即利用script标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为j">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T06:06:05.223Z">
+<meta property="og:updated_time" content="2019-03-12T07:16:34.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯一面总结">
 <meta name="twitter:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp，即利用script标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为j">
@@ -351,17 +351,42 @@
 <li>事件委托（事件代理）</li>
 </ul>
 </li>
-<li><p>作用域链 定义跟执行时</p>
+<li><p>作用域链是在定义时还是执行时创建的？</p>
+<ul>
+<li>执行环境中所有的变量和函数都保存在变量对象中，由解析器在后台使用</li>
+<li>每个函数都有自己的执行环境</li>
+<li>当代码在一个环境中执行时，会创建变量对象的一个作用域链，这说明函数定义时没有作用域链存在，只有调用时有</li>
+<li>作用域链最前端是当前执行代码的变量对象，如果环境是函数，则变量对象是活动对象</li>
+<li>作用：标识符解析</li>
+</ul>
 </li>
 <li><p>原生ajax post请求</p>
+<ul>
+<li>XMLHttpRequest对象</li>
+<li>open方法，接收三个参数：get或post、请求Url、是否异步发送</li>
+<li><p>send方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"example.txt"</span>, <span class="literal">false</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br><span class="line"><span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">    alert(xhr.responseText);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"Request was unsuccessful: "</span> + xhr.status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送异步请求，需要检测XHR对象的readyState属性，这个属性一变化，就会触发readystatechange事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = createXHR();</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>)&#123; <span class="comment">// 4代表已经接收到全部响应数据</span></span><br><span class="line">        <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            alert(xhr.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">"Request was unsuccessful: "</span> + xhr.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"example.txt"</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 <li><p>异步script加载方式</p>
 <ul>
-<li>defer</li>
-<li>js创建script标签</li>
+<li>脚本加载会导致DOM构建停止，出现白屏，所以一般都是把脚本放在body标签底部位置进行加载</li>
+<li>除了底部加载脚本这个方法，还有其他方法解决阻塞问题？</li>
+<li>Defer属性<ul>
+<li>表示脚本可以延迟到文档完全被解析和显示之后再执行</li>
+<li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
-<li><p>基本数据类型 复杂数据类型</p>
+<li>html5的async属性</li>
+<li>动态脚本元素<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>基本类型值 引用类型值</p>
 </li>
 <li><p>内存泄漏</p>
 </li>
