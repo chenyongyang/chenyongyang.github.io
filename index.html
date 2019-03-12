@@ -396,7 +396,17 @@
 </li>
 <li><p>基本类型值 引用类型值</p>
 <ul>
-<li>传值、传地址</li>
+<li>undefined null boolean string number object symbol这七种数据类型</li>
+<li>基本数据类型是按值访问的，存放在栈内存中</li>
+<li>引用类型值是按引用访问的，存放在堆内存中</li>
+<li>typeof能够返回 undefined null boolean string number object function</li>
+<li>如何检测一个数组是数组？<ul>
+<li>instanceof</li>
+<li>原型链方式 数组.<strong>proto</strong>.constructor===Array</li>
+<li>Object.prototype.toString.call(数组)</li>
+<li>Array.isArray()</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>内存泄漏</p>
@@ -407,8 +417,12 @@
 </li>
 <li><p>xss跨站脚本</p>
 <ul>
-<li>反射型（非持久型）<br>贴出一个恶意链接，当其他用户点击这个链接，就会跳转到攻击者的网站，然后就自动执行了恶意js代码<ul>
-<li>一般都是获取用户隐私信息</li>
+<li>反射型（非持久型）<ul>
+<li>对于 xss 反射型攻击，主要是诱使用户点击恶意的链接或者访问存在漏洞的内容，可以有如下方式：<ul>
+<li>攻击者可以将恶意链接直接发送给受信任用户，发送的方式有很多种，比如 email, 网站的私信、评论等</li>
+<li>攻击者可以购买存在漏洞网站的广告，将恶意链接插入在广告的链接中</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>存储型（持久型）——&gt;&gt;&gt;输入检查<ul>
