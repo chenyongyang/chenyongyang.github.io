@@ -329,7 +329,8 @@
 <li><p>json jsonp</p>
 <ul>
 <li>json是一种数据格式；</li>
-<li>jsonp是一种数据调用格式，带callback的json就是jsonp，即利用script标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。主要是利用了html标签的src属性没有同源限制，也就是支持跨域</li>
+<li>jsonp是一种数据调用格式，带callback的json就是jsonp</li>
+<li>利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。主要是利用了html标签的src属性没有同源限制，也就是支持跨域</li>
 </ul>
 </li>
 <li><p>domready onroad</p>
@@ -376,22 +377,88 @@
 <li><p>异步script加载方式</p>
 <ul>
 <li>脚本加载会导致DOM构建停止，出现白屏，所以一般都是把脚本放在body标签底部位置进行加载</li>
-<li>除了底部加载脚本这个方法，还有其他方法解决阻塞问题？</li>
+<li><p>除了底部加载脚本这个方法，还有其他方法解决阻塞问题？</p>
+<ul>
 <li>Defer属性<ul>
 <li>表示脚本可以延迟到文档完全被解析和显示之后再执行</li>
 <li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
 <li>html5的async属性</li>
-<li>动态脚本元素<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
+<li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用XHR对象下载代码，并注入到页面</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li><p>基本类型值 引用类型值</p>
+<ul>
+<li>传值、传地址</li>
+</ul>
 </li>
 <li><p>内存泄漏</p>
+<ul>
+<li>如果闭包的作用域链中保存着一个HTML 元素，那么就意味着该元素将无法被销毁</li>
+<li>需要解除对DOM对象的引用</li>
+</ul>
 </li>
-<li><p>xss csrf</p>
+<li><p>xss跨站脚本</p>
+<ul>
+<li>反射型（非持久型）<br>贴出一个恶意链接，当其他用户点击这个链接，就会跳转到攻击者的网站，然后就自动执行了恶意js代码<ul>
+<li>一般都是获取用户隐私信息</li>
+</ul>
+</li>
+<li>存储型（持久型）——&gt;&gt;&gt;输入检查<ul>
+<li>将一段恶意代码写在评论中，等待其他用户浏览评论时，就自动执行了js代码（获取cookie，并传输给攻击者的服务器）；</li>
+</ul>
+</li>
+<li>基于DOM ——&gt;&gt;&gt;输出检查<ul>
+<li>通过恶意脚本修改DOM结构</li>
+</ul>
+</li>
+<li>如何防范？<ul>
+<li>HttpOnly 防止劫取 Cookie</li>
+<li>输入检查，对用户输入进行检查、过滤和转义</li>
+<li>输出检查，在变量输出到html页面时，将其进行编码或转义</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>csrf跨站请求伪造</p>
+<ul>
+<li>劫持受信任用户向服务器发送非预期请求</li>
+<li>攻击者借助受害者的cookie骗取服务器的信任</li>
+<li>涉及到浏览器的cookie策略<ul>
+<li>cookie有两种：会话期cookie和持久性cookie，后者可以指定过期时间</li>
+</ul>
+</li>
+<li>攻击者放了一个链接，这个链接指向一些删除操作，主要目的是改变服务器的数据</li>
+<li><p>如何防范？</p>
+<ul>
+<li>验证码</li>
+<li><p>referer check</p>
+<ul>
+<li>在http请求头中的referer字段，表示该请求的来源地址</li>
+<li><p>对每一个删帖请求，验证其referer值，如果该值指向其他网站，那就有可能是跨站伪请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (req.headers.referer !== <span class="string">'正确的站点地址'</span>) &#123;</span><br><span class="line">    res.write(<span class="string">'csrf 攻击'</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查referer，还能防止图片盗链</p>
+<ul>
+<li>当referer为空时, 返回正确的图；当referer不为空, 且host命中我的目标网站时, 返回正确的图；当referer不为空, 但host未能命中我的目标网站时, 返回错误的图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>添加token验证<ul>
+<li>基本思路是在请求中添加一些攻击者无法伪造的信息，这些信息也不能存储在cookie中。在请求中添加一个类似随机数的token，服务器建立拦截器来验证</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 
