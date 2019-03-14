@@ -337,6 +337,113 @@
 <li>此时，Web 服务器提供资源服务，客户端开始下载资源。</li>
 <li>浏览器解析HTML生成DOM树，在根据CSS生成渲染树；浏览器缓存相应的信息，查看是否需要更新缓存；呈现页面。</li>
 </ol>
+<p>缓存4个字段及优先级</p>
+<ul>
+<li>Expires</li>
+<li>Cache-control：max-age=6000(毫秒)/no-cache/no-store/private/public</li>
+<li>last-modified</li>
+<li>Etag</li>
+</ul>
+<p>强缓存&gt;弱缓存<br>cache-control&gt;expires<br>ETag &gt; Last-Modified</p>
+<p>ctrl f5 所发送的请求头包含no cache，才会跳过缓存；f5发送请求头中会触发协商缓存</p>
+<p>性能优化</p>
+<ul>
+<li>编码优化<ul>
+<li>数据读取速度<ul>
+<li>缓存对象成员值</li>
+</ul>
+</li>
+<li>DOM<ul>
+<li>缓存DOM属性和元素</li>
+<li>重排、重绘时，先让元素脱离文档流，操作完毕后再插入文档流，减少重排重绘次数</li>
+<li>事件委托</li>
+</ul>
+</li>
+<li>流程控制<ul>
+<li>避免使用for in</li>
+<li>减少迭代</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态资源优化<ul>
+<li>压缩静态文本？</li>
+<li>图片优化<ul>
+<li>响应式图片</li>
+<li>视频替换gif图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>交付优化<ul>
+<li>异步无阻塞加载JS<ul>
+<li>script放底部</li>
+<li>deferer async</li>
+<li>动态创建script标签</li>
+<li>ajax请求js代码注入页面</li>
+</ul>
+</li>
+<li>懒加载</li>
+<li>优先加载关键css</li>
+<li>资源提示<ul>
+<li>dns-prefetch</li>
+<li>preconnect</li>
+<li>prefetch</li>
+<li>prerender</li>
+<li>preload</li>
+</ul>
+</li>
+<li>快速响应的用户界面<ul>
+<li>骨架屏</li>
+<li>loading动画</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>构建优化<ul>
+<li>预编译</li>
+<li>代码分割</li>
+<li>服务端渲染</li>
+<li>import函数导入模块</li>
+<li>善用缓存</li>
+</ul>
+</li>
+</ul>
+<p>css3动画和js动画的区别</p>
+<ul>
+<li>css<ul>
+<li>浏览器对前者会进行一定的优化</li>
+<li>自然降级</li>
+</ul>
+</li>
+<li>js<ul>
+<li>兼容性好</li>
+<li>效果丰富</li>
+</ul>
+</li>
+</ul>
+<h2 id="移动端兼容"><a href="#移动端兼容" class="headerlink" title="移动端兼容"></a>移动端兼容</h2><p>点击事件有300ms延迟，可以用fastclick解决，或者使用zepto的touch模块</p>
+<p>非可点击元素监听click事件，需要设置cursor: pointer</p>
+<p>h5底部输入框被键盘遮挡</p>
+<p>css动画页面闪白、卡顿，解决：可能地使用合成属性transform和opacity来设计CSS3动画</p>
+<p>移动端布局</p>
+<ul>
+<li>响应式布局，媒体查询</li>
+<li>rem，根据font-size来布局</li>
+<li>设置viewport中的width</li>
+<li>vm + rem 对于vm的兼容性，可以使用viewport-units-polyfill解决</li>
+</ul>
+<p>1像素问题</p>
+<ul>
+<li>物理像素和逻辑像素，之间存在一个比例关系，可以通过window.devicePixelRatio获取，所以设计稿上的1px，在实际上会比较粗</li>
+<li>解决方案<ul>
+<li>媒体查询，根据-webkit-min-device-pixel-ratio的不同，来设置小数像素</li>
+<li>用js来获取这个比例，再设置小数像素</li>
+<li>border-image</li>
+<li>background-image</li>
+</ul>
+</li>
+</ul>
 
           
         
