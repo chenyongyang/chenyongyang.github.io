@@ -254,6 +254,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/27/性能优化之虚拟列表/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈泳仰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/性能优化之虚拟列表/" itemprop="url">性能优化之虚拟列表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T21:39:04+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在前端开发中，UI渲染一直都是重头戏。</p>
+<p>我们可以回想一下，通常我们将一个DOM节点渲染到页面上，通常采用的方式有以下两种</p>
+<ul>
+<li>innerHTML</li>
+<li>appendChild</li>
+</ul>
+<p>这两种DOM渲染的方式之间的对比，网络上有很多分析的文章，这里不再赘述</p>
+<p>总的来说，两者对性能的影响差异不大，可以忽略不计</p>
+<p>既然对性能影响不大，那我们还讨论什么呢？</p>
+<p>我们在开发的时候，通常遇到这个场景，后端返回json格式的数据，前端拿到数据自然是渲染，当然在渲染前可能会作一些处理</p>
+<p>如果数据量小的话，那还好办直接对数据进行循环遍历就是了；问题是当返回的数据量很大时，我们该怎么办？</p>
+<p>特别是在移动端，对于性能的要求比较高，如果将大量的数据一次性渲染出来，很可能会出现卡死、白屏、甚至浏览器会崩溃</p>
+<p>我们常见的做法是延迟加载，或叫无限滚动，原理也就是根据滚动条滚动的距离，来判断用户浏览当前网页的位置，监听滚动事件，从而当滚动条到达合适的距离，触发回调向后端发起请求，后端返回数据后再渲染出来</p>
+<p>这种解决问题的思路是从数据入手，也就是对数据进行几次分割，每次只是请求部分数据，这样渲染的压力就减小很多</p>
+<p>传统PC端的分页也是相似的原理，区别只在于分页会导致页面全部刷新，而无限滚动只是局部刷新，后者用户体验更好</p>
+<p>我们今天的主角：虚拟列表。它所要解决的问题也是前面提到的大量DOM渲染开销大的问题，区别于上面的解决手段，它的思路是从UI入手</p>
+<p>它的原理是这样的：当我们在浏览网页时，其实看到的只是浏览器视窗范围的内容，超出视窗的内容我们是看不到的</p>
+<p>那既然这样，我们在渲染DOM时，就只需要渲染用户当前看的部分，其他的都可以不用渲染了</p>
+<p>说到这里，我们就知道要实现虚拟列表，很关键的一点就是高度问题。这里的高度包括浏览器视窗的高度，列表每一项的高度。根据这些高度，我们才可以判断究竟要渲染列表中的哪一项到哪一项。</p>
+<p>当时要用到公司的业务中，肯定需要借助市面上成熟的类库，因为技术栈是React，所以这里以react-virtualized为例，来分析其具体技术实现</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/25/不要写重复代码/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1237,156 +1398,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyongyang.github.io/2018/11/08/数据结构篇——队列/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈泳仰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/08/数据结构篇——队列/" itemprop="url">数据结构篇——队列</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T15:30:32+08:00">
-                2018-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>队列用于存储按顺序排列的数据，是一种先进先出的数据结构，最后入栈的元素反而被优先处理</p>
-<p>应用场景</p>
-<ul>
-<li>提交操作系统执行的一系列进程</li>
-<li>打印任务池</li>
-<li>模拟银行的仿真系统</li>
-<li>等等</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore = [];</span><br><span class="line">    <span class="keyword">this</span>.enqueue = enqueue;</span><br><span class="line">    <span class="keyword">this</span>.dequeue = dequeue;</span><br><span class="line">    <span class="keyword">this</span>.front = front;</span><br><span class="line">    <span class="keyword">this</span>.back = back;</span><br><span class="line">    <span class="keyword">this</span>.toString = toString;</span><br><span class="line">    <span class="keyword">this</span>.empty = empty;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 向队尾添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enqueue</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore.push(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除队尾元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dequeue</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.shift()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取队首、队尾元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">front</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">back</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.dataStore.length<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length; ++i)&#123;</span><br><span class="line">        str += <span class="keyword">this</span>.dataStore[i] + <span class="string">'\n'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">empty</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.dataStore.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">let</span> q = <span class="keyword">new</span> Queue()</span><br><span class="line">q.enqueue(<span class="string">'a'</span>)</span><br><span class="line">q.enqueue(<span class="string">'b'</span>)</span><br><span class="line">q.enqueue(<span class="string">'c'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(q.toString())</span><br><span class="line">q.dequeue()</span><br><span class="line"><span class="built_in">console</span>.log(q.toString())</span><br><span class="line"><span class="built_in">console</span>.log(q.front())</span><br><span class="line"><span class="built_in">console</span>.log(q.back())</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1439,7 +1450,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
