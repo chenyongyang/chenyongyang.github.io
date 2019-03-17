@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp 利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即js">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-17T12:16:59.591Z">
+<meta property="og:updated_time" content="2019-03-17T12:23:16.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯一面总结">
 <meta name="twitter:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp 利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即js">
@@ -378,13 +378,18 @@
 <li>脚本加载会导致DOM构建停止，出现白屏，所以一般都是把脚本放在body标签底部位置进行加载</li>
 <li><p>除了底部加载脚本这个方法，还有其他方法解决阻塞问题？</p>
 <ul>
-<li>Defer属性<ul>
-<li>表示脚本可以延迟到文档完全被解析和显示之后再执行</li>
+<li>defer属性<ul>
+<li>渲染文档的时候，异步下载资源，但不会立即执行，会等到所有元素解析完再执行</li>
 <li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
-<li>html5的async属性<ul>
-<li>作用和defer相同，都是通知浏览器立即下载资源，但是延迟执行，他们的区别就是defer按顺序执行；async是乱序</li>
+<li>async属性<ul>
+<li>在渲染文档是异步下载资源</li>
+</ul>
+</li>
+<li>defer和async的区别<ul>
+<li>defer按顺序执行，async乱序</li>
+<li>defer下载完后不会立即执行；而async下载完后会立即执行，因此执行过程中也会阻塞元素渲染</li>
 </ul>
 </li>
 <li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>

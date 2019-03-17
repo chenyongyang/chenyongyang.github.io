@@ -357,6 +357,36 @@
 <p>定义一个watcher订阅者，接收来自观察者的信息，当数据发生变化时，执行函数，更新视图</p>
 <p>定义一个compile，用来扫描解析节点和指令、初始化模板数据、初始化订阅者</p>
 <p>任何没有设置doctype的Html都将以混杂模式来解析</p>
+<p>浅拷贝</p>
+<ul>
+<li>object.assgin</li>
+<li>展开运算符</li>
+</ul>
+<p>深拷贝</p>
+<ul>
+<li>JSON.parse(JSON.stringify(obj))</li>
+<li>递归逐一赋值</li>
+</ul>
+<p>new运算符的执行过程</p>
+<ul>
+<li>创建一个空对象</li>
+<li>将构造函数的this指向空对象</li>
+<li>为空对象添加属性</li>
+<li>返回该对象</li>
+</ul>
+<p>es6推出的新数据结构set和map</p>
+<ul>
+<li>set集合中的元素是唯一的、不重复</li>
+<li>map和对象类似，区别在于map的键可以是任意数据类型</li>
+<li>两者都提供了一些方法，让我们处理数据</li>
+</ul>
+<p>函数柯里化</p>
+<ul>
+<li>为函数预置参数，以便重复利用</li>
+</ul>
+<p>数组乱序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>数组扁平化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.flat = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.toString().split(<span class="string">','</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> +item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数组去重<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">only</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newarr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(newarr.indexOf(arr[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">            newarr.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newarr    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -765,13 +795,18 @@
 <li>脚本加载会导致DOM构建停止，出现白屏，所以一般都是把脚本放在body标签底部位置进行加载</li>
 <li><p>除了底部加载脚本这个方法，还有其他方法解决阻塞问题？</p>
 <ul>
-<li>Defer属性<ul>
-<li>表示脚本可以延迟到文档完全被解析和显示之后再执行</li>
+<li>defer属性<ul>
+<li>渲染文档的时候，异步下载资源，但不会立即执行，会等到所有元素解析完再执行</li>
 <li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
-<li>html5的async属性<ul>
-<li>作用和defer相同，都是通知浏览器立即下载资源，但是延迟执行，他们的区别就是defer按顺序执行；async是乱序</li>
+<li>async属性<ul>
+<li>在渲染文档是异步下载资源</li>
+</ul>
+</li>
+<li>defer和async的区别<ul>
+<li>defer按顺序执行，async乱序</li>
+<li>defer下载完后不会立即执行；而async下载完后会立即执行，因此执行过程中也会阻塞元素渲染</li>
 </ul>
 </li>
 <li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>
