@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp 利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即js">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T12:52:43.271Z">
+<meta property="og:updated_time" content="2019-03-17T12:16:59.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯一面总结">
 <meta name="twitter:description" content="json jsonp  json是一种数据格式； jsonp是一种数据调用格式，带callback的json就是jsonp 利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即js">
@@ -383,7 +383,10 @@
 <li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
-<li>html5的async属性</li>
+<li>html5的async属性<ul>
+<li>作用和defer相同，都是通知浏览器立即下载资源，但是延迟执行，他们的区别就是defer按顺序执行；async是乱序</li>
+</ul>
+</li>
 <li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
 </li>

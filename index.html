@@ -356,6 +356,7 @@
 <p>定义一个observer观察者，用来劫持并监听所有数据的变化，如果有变化，就通知订阅者</p>
 <p>定义一个watcher订阅者，接收来自观察者的信息，当数据发生变化时，执行函数，更新视图</p>
 <p>定义一个compile，用来扫描解析节点和指令、初始化模板数据、初始化订阅者</p>
+<p>任何没有设置doctype的Html都将以混杂模式来解析</p>
 
           
         
@@ -496,7 +497,7 @@
 </ul>
 <p>强缓存&gt;弱缓存<br>cache-control&gt;expires<br>ETag &gt; Last-Modified</p>
 <p>ctrl f5 所发送的请求头包含no cache，才会跳过缓存；f5发送请求头中会触发协商缓存</p>
-<p>性能优化：重排重绘、事件委托、异步无阻塞加载js、懒加载、虚拟列表、缓存、代码分割</p>
+<p>性能优化：重排重绘、事件委托、异步无阻塞加载js、懒加载、虚拟列表、缓存、代码分割、雪碧图、减少HTTP请求</p>
 <ul>
 <li>编码优化<ul>
 <li>提高数据读取速度，缓存对象成员值</li>
@@ -769,7 +770,10 @@
 <li>兼容性问题，只被Internet Explorer 4+和Firefox 3.5+支持，不是理想方案</li>
 </ul>
 </li>
-<li>html5的async属性</li>
+<li>html5的async属性<ul>
+<li>作用和defer相同，都是通知浏览器立即下载资源，但是延迟执行，他们的区别就是defer按顺序执行；async是乱序</li>
+</ul>
+</li>
 <li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
 </li>
