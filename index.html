@@ -342,6 +342,11 @@
 <li>顾名思义就是变形的意思，这里涉及的变形包括rotate旋转、skew扭曲、scale缩放、translate移动、matrix矩阵变形</li>
 <li>常用的有：translate(x,y)进行2d转换、scale(x,y)进行2d缩放、rotate(角度数)进行2d旋转</li>
 </ul>
+<h3 id="类数组转数组"><a href="#类数组转数组" class="headerlink" title="类数组转数组"></a>类数组转数组</h3><ul>
+<li>Array.prototype.slice.call(类数组)，因为数组slice方法如果不带任何参数，就是默认将数组从头到尾都浅拷贝一份</li>
+<li>Array.from()</li>
+<li>对于有遍历器接口的类数组，可以直接使用扩展运算符</li>
+</ul>
 
           
         
