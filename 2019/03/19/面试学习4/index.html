@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="浏览器跨标签通信  获取句柄，父页面通过window.open()这个接口打开子页面，然后设置当子页面加载onload的时候，将传递的信息作为postMessage的参数；这时子页面上就可以调用window.onmessage接口，获取到父页面传递过来的信息 123456789//A.htmlconst child = window.open(&apos;child.html&apos;, &apos;child&apos;)child">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T08:38:58.267Z">
+<meta property="og:updated_time" content="2019-03-19T08:39:52.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试学习4">
 <meta name="twitter:description" content="浏览器跨标签通信  获取句柄，父页面通过window.open()这个接口打开子页面，然后设置当子页面加载onload的时候，将传递的信息作为postMessage的参数；这时子页面上就可以调用window.onmessage接口，获取到父页面传递过来的信息 123456789//A.htmlconst child = window.open(&apos;child.html&apos;, &apos;child&apos;)child">
@@ -336,6 +336,7 @@
 <ul>
 <li>意外的全局变量，使得这个变量挂在window对象上，没办法被清除，解决方法是：使用严格模式、将其设置为null</li>
 <li>忘记关停定时器，导致定时器内的dom节点一直被引用，没办法回收</li>
+<li>没有移除事件监听器</li>
 <li>闭包</li>
 <li>本以为已经移除了一些没用的dom节点，没想到移除的dom节点还被其他节点所引用，导致无法彻底移除</li>
 </ul>
@@ -372,6 +373,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/20/面试学习5/" rel="prev" title="面试学习5">
+                面试学习5 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -441,7 +446,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
