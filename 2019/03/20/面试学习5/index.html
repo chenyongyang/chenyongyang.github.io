@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="css3动画transition  transition: 执行变化的属性 变化持续的时间 变化的样式 并不是所有的属性都支持 需要事件触发，没办法自动发生1transition: all 2s ease-in-out   animation  可以设置任意多的关键帧，所以动画比较丰富12345@keyframes 动画名 &amp;#123;  0% &amp;#123; top: 0; left: 0px&amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-23T12:34:52.311Z">
+<meta property="og:updated_time" content="2019-03-23T14:15:07.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试学习5">
 <meta name="twitter:description" content="css3动画transition  transition: 执行变化的属性 变化持续的时间 变化的样式 并不是所有的属性都支持 需要事件触发，没办法自动发生1transition: all 2s ease-in-out   animation  可以设置任意多的关键帧，所以动画比较丰富12345@keyframes 动画名 &amp;#123;  0% &amp;#123; top: 0; left: 0px&amp;#">
@@ -369,7 +369,19 @@
 <li>主域名服务器</li>
 <li>保存结果至缓存</li>
 </ul>
-<p>TCP三次握手主要目的是要数据的发送和接收同步</p>
+<p>TCP三次握手主要目的是要数据的发送和接收同步，通俗地讲就是</p>
+<ul>
+<li>A：要连接你</li>
+<li>B：好的收到，是现在连接吗</li>
+<li>A：现在连接吧</li>
+</ul>
+<p>TCP四次挥手</p>
+<ul>
+<li>A：我要走了</li>
+<li>B：好的收到，要等一下，我这边还有几句话没说完</li>
+<li>B：我说完了，可以走了</li>
+<li>A：那拜拜了</li>
+</ul>
 <p>TCP和UDP的区别</p>
 <ul>
 <li>有连接和无连接</li>
@@ -388,6 +400,12 @@
 <li>防止外边距折叠(margin塌陷)</li>
 <li>包含浮动元素</li>
 <li>防止内容被浮动元素覆盖</li>
+</ul>
+<p>如何获取url信息</p>
+<ul>
+<li>URL很多信息都存储在window.location这个属性中，打印即可</li>
+<li>经常会用到如何获取URL的参数及参数值，具体如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetRequest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="built_in">window</span>.location.search; <span class="comment">//获取url中"?"符后的字串</span></span><br><span class="line">  <span class="keyword">var</span> theRequest = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">  <span class="keyword">if</span> (url.indexOf(<span class="string">"?"</span>) != <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> str = url.substr(<span class="number">1</span>)</span><br><span class="line">    strs = str.split(<span class="string">"&amp;"</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; strs.length; i ++) &#123;</span><br><span class="line">      theRequest[strs[i].split(<span class="string">"="</span>)[<span class="number">0</span>]]=<span class="built_in">unescape</span>(strs[i].split(<span class="string">"="</span>)[<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> theRequest</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
