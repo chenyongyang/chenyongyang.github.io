@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="css3动画transition  transition: 执行变化的属性 变化持续的时间 变化的样式 并不是所有的属性都支持 需要事件触发，没办法自动发生1transition: all 2s ease-in-out   animation  可以设置任意多的关键帧，所以动画比较丰富12345@keyframes 动画名 &amp;#123;  0% &amp;#123; top: 0; left: 0px&amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-20T14:00:25.246Z">
+<meta property="og:updated_time" content="2019-03-23T09:24:14.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试学习5">
 <meta name="twitter:description" content="css3动画transition  transition: 执行变化的属性 变化持续的时间 变化的样式 并不是所有的属性都支持 需要事件触发，没办法自动发生1transition: all 2s ease-in-out   animation  可以设置任意多的关键帧，所以动画比较丰富12345@keyframes 动画名 &amp;#123;  0% &amp;#123; top: 0; left: 0px&amp;#">
@@ -360,9 +360,34 @@
 <p>dns解析过程</p>
 <ul>
 <li>浏览器缓存</li>
+<li>操作系统缓存</li>
 <li>本地Host文件</li>
-<li>本地区的域名服务器localDNS，这一步90%都有缓存，所以也是它承担了大部分的DNS解析工作</li>
+<li>路由器缓存</li>
+<li>运营商DNS服务</li>
 <li>根域名服务器</li>
+<li>顶级域名服务器</li>
+<li>主域名服务器</li>
+<li>保存结果至缓存</li>
+</ul>
+<p>TCP三次握手主要目的是要数据的发送和接收同步</p>
+<p>###TCP和UDP的区别</p>
+<ul>
+<li>有连接和无连接</li>
+<li>保证数据的正确性和可能发生丢包</li>
+<li>保证数据顺序，后者不保证</li>
+</ul>
+<p>==运算符会首先将操作对象转化为相同类型，具体表现为</p>
+<ul>
+<li>只要其中有一个是NaN，就返回false</li>
+<li>如果两个都是null或者undefined，返回true</li>
+<li>如果两个都是基本数据类型，且类型不同，则将两者都将转化数值类型再比较</li>
+<li>如果是引用类型值，则将其转化为基本类型再比较</li>
+</ul>
+<p>bfc三个特性</p>
+<ul>
+<li>防止外边距折叠(margin塌陷)</li>
+<li>包含浮动元素</li>
+<li>防止内容被浮动元素覆盖</li>
 </ul>
 
       
