@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-26T06:31:16.213Z">
+<meta property="og:updated_time" content="2019-03-26T08:47:19.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -398,6 +398,7 @@
 </li>
 <li>一般都是将事件处理程序添加到冒泡阶段，兼容性更好</li>
 <li>事件委托（事件代理）</li>
+<li>在一个标签嵌套的DOM结构中，对每一级的元素都绑定事件。最内层的元素先触发，再往外一层一层触发，出于冒泡机制。如何点击元素时父元素事件不触发，也就是如何阻止冒泡？event.stopPropagation()起到阻止捕获和冒泡阶段中事件进一步传输；IE中是用e.cancelBubble = true</li>
 </ul>
 <p>作用域链是在定义时还是执行时创建的？</p>
 <ul>
@@ -599,7 +600,7 @@
 <li>善用缓存</li>
 </ul>
 </li>
-<li>开启gzip，通常用来压缩静态文件</li>
+<li>开启gzip，通常用来压缩静态文件。首先浏览器在请求头中设置accept-coding: gzip，这表明浏览器支持gzip。当服务器接收到请求后，判断浏览器是否支持gzip，如果支持就返回压缩后的内容，如果不支持则发送未压缩内容，一般都是在响应头添加content-encoding: gzip</li>
 </ul>
 <p>css3动画和js动画的区别</p>
 <ul>
@@ -820,6 +821,12 @@
 <li>fixed，相对于浏览器窗口固定位置；当如父元素设置了transform时，则根据父元素来定位</li>
 <li>relative，根据在文档流的初始位置进行定位</li>
 <li>absolute，根据距离最近的已定位的父元素进行定位</li>
+</ul>
+<p>https</p>
+<ul>
+<li>在整个加密过程中，要加密的内容有两个，一个是数据，另一个是用来加密数据的密钥。数据的加密，由于对称加密速度快、占用资源少，非对称加密对数据长度有限制，所以选择对称加密。那么也就会产生一个密钥，这个密钥需要双方都知道，如何传输这个密钥呢？也就是用非对称加密来传输密钥</li>
+<li>数字证书就是用来安全传输公钥的</li>
+<li>采用非对称加密来传输密钥，使用对称加密来加密数据</li>
 </ul>
 
       
