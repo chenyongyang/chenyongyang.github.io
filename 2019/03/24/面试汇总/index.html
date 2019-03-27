@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-27T06:04:26.818Z">
+<meta property="og:updated_time" content="2019-03-27T11:39:17.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -739,7 +739,7 @@
 </li>
 <li><p>animation</p>
 <ul>
-<li>可以设置任意多的关键帧，所以动画比较丰富<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> 动画名 &#123;</span><br><span class="line">0% &#123; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0px</span>&#125;</span><br><span class="line">50% &#123; <span class="attribute">top</span>: <span class="number">30px</span>; <span class="attribute">left</span>: <span class="number">20px</span>; &#125;</span><br><span class="line">100% &#123; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">30px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>可以设置任意多的关键帧，所以动画比较丰富<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> 动画名 &#123;</span><br><span class="line">    0% &#123; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0px</span>&#125;</span><br><span class="line">    50% &#123; <span class="attribute">top</span>: <span class="number">30px</span>; <span class="attribute">left</span>: <span class="number">20px</span>; &#125;</span><br><span class="line">    100% &#123; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">30px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -863,6 +863,30 @@
 </li>
 <li>兼容性：需要一些前缀</li>
 </ul>
+<p>font-smoothing控制字体的清晰度</p>
+<p>清除浮动的几种方式</p>
+<ul>
+<li>浮动最初是用来实现文字环绕效果的</li>
+<li>浮动的特征<ul>
+<li>脱离文档流</li>
+<li>可以让块元素像行元素一样排列</li>
+<li>导致父元素的高度塌陷</li>
+</ul>
+</li>
+<li>写一个空标签，定义clear: both</li>
+<li>:after伪元素，定义clear: both</li>
+<li>触发父元素的BFC，即定义overflow: hidden/auto</li>
+<li>给容器元素添加浮动，可以清楚内部浮动</li>
+</ul>
+<p>css3新特性</p>
+<ul>
+<li>[<a href="https://juejin.im/post/5a0c184c51882531926e4294]" target="_blank" rel="noopener">https://juejin.im/post/5a0c184c51882531926e4294]</a></li>
+</ul>
+<p>css布局相关</p>
+<ul>
+<li>[<a href="https://segmentfault.com/a/1190000013565024?utm_source=channel-hottest]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013565024?utm_source=channel-hottest]</a></li>
+</ul>
+<p>style标签的media属性为不同的媒介类型规定不同的样式</p>
 
       
     </div>
