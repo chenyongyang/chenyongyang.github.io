@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:04:26.957Z">
+<meta property="og:updated_time" content="2019-03-30T12:21:14.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -406,8 +406,12 @@
 <li>每个函数都有自己的执行环境</li>
 <li>当代码在一个环境中执行时，会创建变量对象的一个作用域链，这说明函数定义时没有作用域链存在，只有调用时有</li>
 <li>作用域链最前端是当前执行代码的变量对象，如果环境是函数，则变量对象是活动对象</li>
-<li>作用：标识符解析</li>
+<li>作用：保证对执行环境所能够访问的变量或函数的有序访问</li>
 </ul>
+<p>执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为</p>
+<p>执行环境中所有的变量和函数都存储在变量对象中，这个变量对象是供解析器使用的</p>
+<p>上下文执行栈：每个函数都有自己的执行环境，当执行流到达某个函数时，这个函数的执行环境就被推入栈中，函数执行完就被弹出</p>
+<p>当代码执行时，会创建所在执行环境的变量对象的作用域链</p>
 <p>原生ajax post请求</p>
 <ul>
 <li>XMLHttpRequest对象</li>
