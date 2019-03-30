@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-27T11:39:17.825Z">
+<meta property="og:updated_time" content="2019-03-30T12:04:26.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -887,6 +887,14 @@
 <li>[<a href="https://segmentfault.com/a/1190000013565024?utm_source=channel-hottest]" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013565024?utm_source=channel-hottest]</a></li>
 </ul>
 <p>style标签的media属性为不同的媒介类型规定不同的样式</p>
+<p>如何减少dom操作带来的资源耗费</p>
+<ul>
+<li>减少对dom节点的访问</li>
+<li>合并多次dom操作</li>
+<li>缓存dom节点</li>
+<li>如果元素需要做动画，尽量让其脱离文档流，避免回流重绘</li>
+<li>事件委托</li>
+</ul>
 
       
     </div>
