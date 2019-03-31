@@ -1246,7 +1246,8 @@
 <p>Session保存在服务器端。通常浏览器第一次访问某页面，发送给服务器的请求中自然就没有携带sessionId，那么当服务器就会生成一个sessionId，并将其放在响应头中，以cookie的形式返回给客户端，客户端拿到这个ID保存起来，下一次访问时就可以将这个ID发送给服务器端，服务器就可以根据这个ID到保存session的地方寻找对应的数据，将数据返回给客户端</p>
 <p>Cookie是实现Session的一种方式，这个sessionId就存储在cookie中</p>
 <p>如果用户禁用了cookie，服务器端如何跟踪用户呢？利用URL重写，浏览器将sessionId作为get请求的参数发送给服务器端，这样服务器照样可以找到session的数据</p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+<p>区别</p>
+<ul>
 <li>cookie保存在客户端，session保存在服务器端</li>
 <li>session存储量比cookie大</li>
 <li>用户可以看到cookie，但是看不到session</li>
