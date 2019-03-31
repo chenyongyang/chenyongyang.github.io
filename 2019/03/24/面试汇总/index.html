@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T03:11:51.532Z">
+<meta property="og:updated_time" content="2019-03-31T07:00:44.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -370,10 +370,25 @@
 </li>
 </ul>
 <p>navigator.userAgent获取浏览器版本</p>
-<p>service worker的用途</p>
+<p>web worker</p>
 <ul>
-<li>消息推送</li>
-<li>离线缓存</li>
+<li>产生的环境<ul>
+<li>JavaScript属于单线程，web worker为其创造了多线程环境。使得JavaScript主线程上的一些任务可以丢给web worker去执行，这样就提高了工作效率</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>DOM限制（只能操作navigator和location这两个对象，无法操作DOM）</li>
+<li>脚本限制（无法调用alert、confirm这类脚本，只能发送ajax）</li>
+<li>文件限制（无法读取本地文件）</li>
+<li>同源限制（worker所作用的脚本文件必须与主线程同源）</li>
+<li>通信限制（worker无法与主线程直接通信，必须通过消息）</li>
+</ul>
+</li>
+</ul>
+<p>service worker属于web worker的一种，它主要的功能是：</p>
+<ul>
+<li>消息通知推送</li>
+<li>缓存离线资源</li>
 </ul>
 <p>json jsonp</p>
 <ul>

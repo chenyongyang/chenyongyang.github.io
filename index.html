@@ -371,10 +371,25 @@
 </li>
 </ul>
 <p>navigator.userAgent获取浏览器版本</p>
-<p>service worker的用途</p>
+<p>web worker</p>
 <ul>
-<li>消息推送</li>
-<li>离线缓存</li>
+<li>产生的环境<ul>
+<li>JavaScript属于单线程，web worker为其创造了多线程环境。使得JavaScript主线程上的一些任务可以丢给web worker去执行，这样就提高了工作效率</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>DOM限制（只能操作navigator和location这两个对象，无法操作DOM）</li>
+<li>脚本限制（无法调用alert、confirm这类脚本，只能发送ajax）</li>
+<li>文件限制（无法读取本地文件）</li>
+<li>同源限制（worker所作用的脚本文件必须与主线程同源）</li>
+<li>通信限制（worker无法与主线程直接通信，必须通过消息）</li>
+</ul>
+</li>
+</ul>
+<p>service worker属于web worker的一种，它主要的功能是：</p>
+<ul>
+<li>消息通知推送</li>
+<li>缓存离线资源</li>
 </ul>
 <p>json jsonp</p>
 <ul>
