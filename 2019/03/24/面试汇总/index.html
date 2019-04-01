@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T08:30:09.728Z">
+<meta property="og:updated_time" content="2019-04-01T12:49:36.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="水平居中 垂直居中 水平垂直居中 apply接收的是数组，call接收参数列表 js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向">
@@ -396,6 +396,10 @@
 <li>jsonp是一种数据调用格式，带callback的json就是jsonp</li>
 <li>利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。主要是利用了html标签的src属性没有同源限制，也就是支持跨域</li>
 </ul>
+<p>跨域问题</p>
+<ul>
+<li>拥有跨域能力的标签：script iframe img，凡是拥有src属性的标签都拥有跨域能力</li>
+</ul>
 <p>domready onroad</p>
 <ul>
 <li>首先要清楚dom文档加载的步骤为：1.解析html结构；2.加载外部脚本和样式表文件；3解析并执行脚本；4.dom树构建完成；5.加载图片等外部文件；6.页面加载完毕。domready（也叫DOMContentLoaded ），在第4步完成后触发；图片onload是在第5步完成后触发；页面onload是第6步完成后触发。由此可见三者执行顺序为：domready→图片load→页面load。</li>
@@ -484,6 +488,7 @@
 </ul>
 <p>xss跨站脚本</p>
 <ul>
+<li>xss就是在别人的应用程序中恶意执行一段js代码以窃取cookie</li>
 <li>反射型（非持久型）<ul>
 <li>对于 xss 反射型攻击，主要是诱使用户点击恶意的链接或者访问存在漏洞的内容，可以有如下方式：</li>
 <li>攻击者可以将恶意链接直接发送给受信任用户，发送的方式有很多种，比如 email, 网站的私信、评论等</li>
@@ -498,7 +503,7 @@
 </li>
 <li><p>如何防范？</p>
 <ul>
-<li>HttpOnly 防止劫取 Cookie</li>
+<li>HttpOnly，存储在http响应头，当该值为true时，客户端就无法通过document.cookie来获取cookie了</li>
 <li>输入检查，对用户输入进行检查、过滤和转义</li>
 <li>输出检查，在变量输出到html页面时，将其进行编码或转义</li>
 </ul>
@@ -955,6 +960,17 @@
 </ul>
 </li>
 <li>不同域下的单点登录（方案比较复杂，待研究）</li>
+</ul>
+<p>webpack打包流程</p>
+<ul>
+<li>[<a href="http://taobaofed.org/blog/2016/09/09/webpack-flow/]" target="_blank" rel="noopener">http://taobaofed.org/blog/2016/09/09/webpack-flow/]</a></li>
+</ul>
+<p>HTTP/2</p>
+<ul>
+<li>单一长连接</li>
+<li>多路复用</li>
+<li>头部压缩</li>
+<li>服务器推送</li>
 </ul>
 
       
