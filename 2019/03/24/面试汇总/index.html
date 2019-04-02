@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T11:04:22.887Z">
+<meta property="og:updated_time" content="2019-04-02T14:11:19.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -458,10 +458,10 @@
 </li>
 <li>defer和async的区别<ul>
 <li>defer按顺序执行，async乱序</li>
-<li>defer下载完后不会立即执行；而async下载完后会立即执行，因此执行过程中也会阻塞元素渲染</li>
+<li>defer下载完会等到html解析完后再执行；而async下载完后会立即执行，会中断html的解析</li>
 </ul>
 </li>
-<li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用</p>
+<li><p>动态脚本加载，是非阻塞Javascript下载中最常用的模式，因为它可以跨浏览器，而且简单易用。建议：一般将动态的script标签插入到head标签比较保险，因为有可能遇到插入时body内容还没有加载完，此时IE会抛出操作已终止的错误</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">script.src = <span class="string">"file1.js"</span>; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>用XHR对象下载代码，并注入到页面</p>
@@ -596,7 +596,7 @@
 <li>交付优化<ul>
 <li>异步无阻塞加载JS<ul>
 <li>script放底部</li>
-<li>deferer async</li>
+<li>defer async</li>
 <li>动态创建script标签</li>
 <li>ajax请求js代码注入页面</li>
 </ul>
@@ -626,7 +626,10 @@
 <li>善用缓存</li>
 </ul>
 </li>
-<li>开启gzip，通常用来压缩静态文件。首先浏览器在请求头中设置accept-coding: gzip，这表明浏览器支持gzip。当服务器接收到请求后，判断浏览器是否支持gzip，如果支持就返回压缩后的内容，如果不支持则发送未压缩内容，一般都是在响应头添加content-encoding: gzip</li>
+<li>开启gzip，通常用来压缩静态文件。首先浏览器在请求头中设置accept-coding: gzip，这表明浏览器支持gzip。当服务器接收到请求后，判断浏览器是否支持gzip，如果支持就返回压缩后的内容，如果不支持则发送未压缩内容，一般都是在响应头添加content-encoding: gzip。开启gzip会消耗服务器资源，所以一般只针对文本文件；而一些图片、pdf等本身已经压缩过了，为二进制文件，就没必要gzip压缩了</li>
+<li>合并css、js文件</li>
+<li>压缩js文件，具体操作：去空格、去换行符、用短小词汇重命名变量名和函数名，实际开发中都是借助一些压缩工具，如UglifyJS、Google Closure Compiler等</li>
+<li>使用cdn内容分发网络，原理是通过向地理位置最近的用户传输内容，减少网络延时</li>
 </ul>
 <p>css性能优化</p>
 <ul>
