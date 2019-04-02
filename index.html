@@ -325,11 +325,7 @@
       
         
           
-            <p>水平居中</p>
-<p>垂直居中</p>
-<p>水平垂直居中</p>
-<p>apply接收的是数组，call接收参数列表</p>
-<p>js继承方式</p>
+            <p>js继承方式</p>
 <ul>
 <li>借用构造函数</li>
 <li>组合继承</li>
@@ -428,11 +424,15 @@
 <li>作用域链最前端是当前执行代码的变量对象，如果环境是函数，则变量对象是活动对象</li>
 <li>作用：保证对执行环境所能够访问的变量或函数的有序访问</li>
 </ul>
-<p>执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为</p>
-<p>作用域就是执行环境</p>
-<p>执行环境中所有的变量和函数都存储在变量对象中，这个变量对象是供解析器使用的</p>
-<p>上下文执行栈：每个函数都有自己的执行环境，当执行流到达某个函数时，这个函数的执行环境就被推入栈中，函数执行完就被弹出</p>
-<p>当代码执行时，会创建所在执行环境的变量对象的作用域链</p>
+<p>关于作用域，有一些名词比较容易混淆</p>
+<ul>
+<li>执行环境（作用域）、作用域链、上下文执行栈、变量对象、活动对象</li>
+<li>执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为</li>
+<li>作用域就是执行环境</li>
+<li>执行环境中所有的变量和函数都存储在变量对象中，这个变量对象是供解析器使用的</li>
+<li>当执行流处于函数时，变量对象就称为活动对象</li>
+<li>上下文执行栈：每个函数都有自己的执行环境，当执行流到达某个函数时，这个函数的执行环境就被推入栈中，函数执行完就被弹出</li>
+</ul>
 <p>原生ajax post请求</p>
 <ul>
 <li>XMLHttpRequest对象</li>
@@ -502,15 +502,15 @@
 <li>通过恶意脚本修改DOM结构</li>
 </ul>
 </li>
-<li><p>如何防范？</p>
-<ul>
+<li>如何防范？<ul>
 <li>HttpOnly，存储在http响应头，当该值为true时，客户端就无法通过document.cookie来获取cookie了</li>
 <li>输入检查，对用户输入进行检查、过滤和转义</li>
 <li>输出检查，在变量输出到html页面时，将其进行编码或转义</li>
 </ul>
 </li>
-<li><p>csrf跨站请求伪造</p>
-</li>
+</ul>
+<p>csrf跨站请求伪造</p>
+<ul>
 <li>劫持受信任用户向服务器发送非预期请求</li>
 <li>攻击者借助受害者的cookie骗取服务器的信任</li>
 <li>涉及到浏览器的cookie策略<ul>
@@ -716,7 +716,13 @@
 <li>视图到数据这一块可以通过事件监听来实现</li>
 <li>比较关键的就是数据到视图这一块，定义一个observer观察者，用来劫持并监听所有数据的变化，如果有变化，就通知订阅者；定义一个watcher订阅者，接收来自观察者的信息，当数据发生变化时，执行函数，更新视图；定义一个compile，用来扫描解析节点和指令、初始化模板数据、初始化订阅者</li>
 </ul>
-<p>任何没有设置doctype的Html都将以混杂模式来解析</p>
+<p>doctype必须声明在文档的最前面，告诉浏览器以什么样的方式来渲染页面</p>
+<ul>
+<li>渲染的方式分为两种：混杂模式、严格模式</li>
+<li>严格模式：浏览器以支持的最高标准来渲染</li>
+<li>混杂模式：向后兼容（这里的兼容包括盒模型解析等）</li>
+<li>任何没有设置doctype的Html都将以混杂模式来解析</li>
+</ul>
 <p>浅拷贝</p>
 <ul>
 <li>object.assgin</li>
@@ -815,6 +821,7 @@
 <li>主域名服务器</li>
 <li>保存结果至缓存</li>
 </ul>
+<p>dns工作原理</p>
 <p>TCP三次握手主要目的是要数据的发送和接收同步，通俗地讲就是</p>
 <ul>
 <li>A：要连接你</li>
@@ -874,6 +881,7 @@
 <li>在整个加密过程中，要加密的内容有两个，一个是数据，另一个是用来加密数据的密钥。数据的加密，由于对称加密速度快、占用资源少，非对称加密对数据长度有限制，所以选择对称加密。那么也就会产生一个密钥，这个密钥需要双方都知道，如何传输这个密钥呢？也就是用非对称加密来传输密钥</li>
 <li>数字证书就是用来安全传输公钥的</li>
 <li>采用非对称加密来传输密钥，使用对称加密来加密数据</li>
+<li>非对称加密算法性能很低，原因在于寻找大素数、大数计算、数据分割需要消耗很多CPU周期，一般只在第一次握手时使用</li>
 </ul>
 <p>TCP是如何保证可靠传输的</p>
 <ul>
@@ -953,6 +961,10 @@
 </ul>
 </li>
 </ul>
+<p>删除cookie</p>
+<ul>
+<li>将cookie的过期时间设置为过去的时间，系统就会自动删除</li>
+</ul>
 <p>怎么实现多个网站之间共享登陆状态</p>
 <ul>
 <li>解决方案：SSO单点登录</li>
@@ -966,12 +978,62 @@
 <ul>
 <li>[<a href="http://taobaofed.org/blog/2016/09/09/webpack-flow/]" target="_blank" rel="noopener">http://taobaofed.org/blog/2016/09/09/webpack-flow/]</a></li>
 </ul>
-<p>HTTP/2</p>
+<p>HTTP/2新特性</p>
 <ul>
 <li>单一长连接</li>
 <li>多路复用</li>
 <li>头部压缩</li>
 <li>服务器推送</li>
+</ul>
+<p>回流 重绘</p>
+<ul>
+<li>回流：当渲染树中的某些元素尺寸、结构发生变化时</li>
+<li>重绘：当元素样式改变并不影响它在文档流的位置时（颜色、visibility）</li>
+<li>回流的代价更高</li>
+<li>如何避免<ul>
+<li>css<ul>
+<li>少用table布局</li>
+<li>需要设置动画的元素，应该脱离文档流</li>
+<li>少使用css表达式</li>
+</ul>
+</li>
+<li>js<ul>
+<li>一次性修改style或class</li>
+<li>通过documentFragment完成对dom的操作，完事后再插入到文档流中</li>
+<li>先将元素的display设置为none，再进行相关操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ipv4有4个字节，共32位；ipv6是ipv4的4倍，有16个字节，共128位</p>
+<p>子网掩码的作用是将某个IP地址划分为网络地址（远程网）和主机地址（局域网）</p>
+<p>webpack配置字段</p>
+<ul>
+<li>entry</li>
+<li>resolve</li>
+<li>output</li>
+<li>module<ul>
+<li>loaders</li>
+</ul>
+</li>
+<li>plugins</li>
+</ul>
+<p>css属性继承与不可继承</p>
+<ul>
+<li>不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。</li>
+<li>所有元素可继承：visibility和cursor。</li>
+<li>内联元素可继承：letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction。</li>
+<li>终端块状元素可继承：text-indent和text-align。</li>
+<li>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。</li>
+<li>表格元素可继承：border-collapse</li>
+</ul>
+<p>css预处理器的特性</p>
+<ul>
+<li>定义变量</li>
+<li>嵌套</li>
+<li>函数</li>
+<li>做运算</li>
 </ul>
 
           
