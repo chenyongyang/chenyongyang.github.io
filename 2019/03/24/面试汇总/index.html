@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T14:11:19.973Z">
+<meta property="og:updated_time" content="2019-04-04T08:00:05.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -443,6 +443,12 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = createXHR();</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>)&#123; <span class="comment">// 4代表已经接收到全部响应数据</span></span><br><span class="line">        <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            alert(xhr.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">"Request was unsuccessful: "</span> + xhr.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"example.txt"</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>ajax原理</p>
+<ul>
+<li>首先js引擎会实例化一个xhr对象，调用open方法（接收请求方法，请求地址，同步或异步），然后调用send方法，将ajax请求发送给服务器</li>
+<li>xhr对象就会监听readyState属性的变化，具体就是onreadystatechange方法，在这个方法中判断当readyState属性为4并且服务器端返回响应的status为200时，就可以通过responseText来获取服务器响应的数据</li>
+<li>readyState有0、1、2、3、4。其中4代表请求已完成，响应已就绪</li>
+</ul>
 <p>异步script加载方式</p>
 <ul>
 <li>脚本加载会导致DOM构建停止，出现白屏，所以一般都是把脚本放在body标签底部位置进行加载</li>
@@ -567,7 +573,7 @@
 </ul>
 <p>ctrl f5 所发送的请求头包含no cache，才会跳过缓存；f5发送请求头中会触发协商缓存</p>
 <p>缓存有两个来源：内存缓存和磁盘缓存。一般刷新页面，缓存会从内存中获取；将tab页关闭再打开，缓存会从磁盘中获取</p>
-<p>性能优化：重排重绘、事件委托、异步无阻塞加载js、懒加载、虚拟列表、缓存、代码分割、雪碧图、减少HTTP请求</p>
+<p>性能优化：重排重绘、事件委托、异步无阻塞加载js、懒加载、虚拟列表、缓存、代码分割、雪碧图、减少HTTP请求。可以参考雅虎性能优化军规</p>
 <ul>
 <li>编码优化<ul>
 <li>提高数据读取速度，缓存对象成员值</li>
@@ -1036,6 +1042,44 @@
 <li>嵌套</li>
 <li>函数</li>
 <li>做运算</li>
+</ul>
+<p>http持久连接（keep-alive、http连接复用）</p>
+<ul>
+<li>使用同一个TCP连接来发送和接收多个HTTP请求和应答，而不是每个请求和应答都打开一个新的连接</li>
+<li>好处<ul>
+<li>使用较少的CPU和内存</li>
+<li>http管线化</li>
+<li>降低拥塞控制</li>
+<li>减少了后续请求延迟</li>
+</ul>
+</li>
+</ul>
+<p>输入一个URL后发生了什么</p>
+<ul>
+<li>[<a href="https://blog.csdn.net/zhailihua/article/details/78712309]" target="_blank" rel="noopener">https://blog.csdn.net/zhailihua/article/details/78712309]</a></li>
+<li>[<a href="https://learnku.com/articles/20672]" target="_blank" rel="noopener">https://learnku.com/articles/20672]</a></li>
+</ul>
+<p>301 302</p>
+<ul>
+<li>共同点：都表示重定向</li>
+<li>不同点：301表示内容永久移除，302表示内容暂时移除；301搜素引擎会用新网站替换旧网址，302搜素引擎还会保留旧网址，这就涉及到搜素引擎排名</li>
+</ul>
+<p>怎么去分析性能</p>
+<p>页面卡顿</p>
+<p>首屏加载慢</p>
+<ul>
+<li>缩小js文件体积<ul>
+<li>将依赖的一些第三方库，通过cdn形式引入。具体操作：先将这些包用webpack的externals字段分离出去，然后在页面通过script标签加载资源（这里要用defer属性）</li>
+<li>对于一些体积很大的库，还可以考虑按需加载，即在使用它的具体组件引入该库</li>
+<li>开启gzip</li>
+</ul>
+</li>
+<li>加载顺序<ul>
+<li>首要目的就是让文档尽快解析渲染出来，因此有可能影响到文档解析都必须要往后推、异步</li>
+<li>添加defer、async属性</li>
+</ul>
+</li>
+<li>缓存，设置max-age</li>
 </ul>
 
       
