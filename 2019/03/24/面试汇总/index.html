@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T09:00:23.678Z">
+<meta property="og:updated_time" content="2019-04-05T08:44:30.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -478,7 +478,9 @@
 <li>undefined null boolean string number object symbol这七种数据类型</li>
 <li>基本数据类型是按值访问的，存放在栈内存中</li>
 <li>引用类型值是按引用访问的，存放在堆内存中</li>
-<li>typeof能够返回 undefined null boolean string number object function</li>
+<li>js有5种基本数据类型：number string boolean null undefined</li>
+<li>有1种复杂数据类型：object</li>
+<li>typeof返回6种格式：number string boolean object(包括null) function undefined</li>
 </ul>
 <p>判断数组的几种方式</p>
 <ul>
@@ -739,6 +741,7 @@
 <p>深拷贝</p>
 <ul>
 <li>JSON.parse(JSON.stringify(obj))</li>
+<li>使用lodash等第三方库</li>
 <li>递归逐一赋值</li>
 </ul>
 <p>new运算符的执行过程</p>
@@ -1094,6 +1097,17 @@
 <li>事件处理函数的this指向触发事件的目标对象</li>
 <li>内联事件处理函数中，如果单纯输出this则为undefined；否则为目标对象</li>
 </ul>
+<p>html元素显示优先级问题</p>
+<ul>
+<li>帧元素 &gt; 表单元素 &gt; 非表单元素</li>
+<li>有窗口元素（select、object、frames） &gt; 无窗口元素</li>
+</ul>
+<p>区分history、location、navigator这三个对象</p>
+<ul>
+<li>history存储着浏览记录，通过该对象的back、forward等方法可以实现浏览器的前进后退操作；还可以对浏览器历史记录栈进行增加、修改操作</li>
+<li>location存储着url的一切信息，包括host hostname origin pathname protocol search(携带的参数)；同时也提供了重新加载、更换页面的方法</li>
+<li>navigator存储浏览器相关信息</li>
+</ul>
 
       
     </div>
@@ -1127,6 +1141,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/07/不要浮躁/" rel="prev" title="不要浮躁">
+                不要浮躁 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1196,7 +1214,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
