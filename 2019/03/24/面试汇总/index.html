@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T13:41:50.032Z">
+<meta property="og:updated_time" content="2019-04-08T14:09:50.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -1144,9 +1144,32 @@
 <p>子网掩码的作用是为了让我们知道一个IP地址中，网络号和主机号是什么</p>
 <p>移动端点击穿透</p>
 <ul>
-<li>出现的原因</li>
-<li>解决方法</li>
+<li>出现的原因<ul>
+<li>移动端浏览器有一个“双击放大”的功能，所以当用户在移动端页面点击时，浏览器需要等待300ms来判断用户是单击还是双击</li>
+</ul>
+</li>
+<li>解决方法<ul>
+<li>借助第三方库：fastclick</li>
+<li>css3属性：pointer-event</li>
+<li>只用touch或click，两者不要混用</li>
+<li>让遮罩层延迟关闭，不要让点击事件流到别处</li>
+</ul>
+</li>
 <li>现状：截至2015年底，大多数移动浏览器（尤其是Chrome和Safari）不再具有300毫秒的触摸延迟</li>
+</ul>
+<p>移动端性能优化的思路大体上和PC端类似，再补充一些</p>
+<ul>
+<li>内联首屏渲染必需的css和js</li>
+<li>合理利用MTU策略<ul>
+<li>MTU指的是TCP网络传输的最大传输单元，一般为1500B，这就要求我们尽可能保证页面的html内容在1KB以内，这样html内容请求就可以在一个网络请求往返时间内完成，提高html的载入速度</li>
+</ul>
+</li>
+<li>静态资源离线方案<ul>
+<li>对于移动端项目，可以通过离线文件或离线包机制，让静态资源的请求从本地读取，并实现离线更新</li>
+</ul>
+</li>
+<li>设置viewport固定屏幕渲染，这样可以避免缩放导致回流重绘<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span>  <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
