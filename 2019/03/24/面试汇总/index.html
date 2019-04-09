@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T14:09:50.826Z">
+<meta property="og:updated_time" content="2019-04-09T13:12:07.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -1169,6 +1169,20 @@
 </ul>
 </li>
 <li>设置viewport固定屏幕渲染，这样可以避免缩放导致回流重绘<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span>  <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>CRP关键渲染路径</p>
+<ul>
+<li>指的是当浏览器接收到服务器返回的响应后，将响应内容渲染到页面上需要经历多个步骤，这一系列的步骤或行为就被称为关键渲染路径</li>
+<li>理解CRP对于提高网页的渲染效率很有帮助</li>
+<li>内容<ul>
+<li>构建DOM树</li>
+<li>构建CSSOM树</li>
+<li>运行JavaScript</li>
+<li>构建render树</li>
+<li>生成布局（layout）</li>
+<li>绘制（painting）</li>
+</ul>
 </li>
 </ul>
 

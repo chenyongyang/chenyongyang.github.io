@@ -1291,6 +1291,20 @@
 <li>设置viewport固定屏幕渲染，这样可以避免缩放导致回流重绘<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span>  <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>CRP关键渲染路径</p>
+<ul>
+<li>指的是当浏览器接收到服务器返回的响应后，将响应内容渲染到页面上需要经历多个步骤，这一系列的步骤或行为就被称为关键渲染路径</li>
+<li>理解CRP对于提高网页的渲染效率很有帮助</li>
+<li>内容<ul>
+<li>构建DOM树</li>
+<li>构建CSSOM树</li>
+<li>运行JavaScript</li>
+<li>构建render树</li>
+<li>生成布局（layout）</li>
+<li>绘制（painting）</li>
+</ul>
+</li>
+</ul>
 
           
         
