@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-09T13:12:07.796Z">
+<meta property="og:updated_time" content="2019-04-14T07:09:02.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -1177,13 +1177,38 @@
 <li>理解CRP对于提高网页的渲染效率很有帮助</li>
 <li>内容<ul>
 <li>构建DOM树</li>
-<li>构建CSSOM树</li>
-<li>运行JavaScript</li>
-<li>构建render树</li>
-<li>生成布局（layout）</li>
-<li>绘制（painting）</li>
+<li>构建CSSOM树<ul>
+<li>渲染阻塞资源</li>
+<li>只有当前一个css资源加载完才会加载下一个（这是由于css具有继承性质）</li>
+<li>css还会阻塞js，因为js会等到cssom树构建完成后才执行</li>
+<li>优化：设置媒体类型或媒体查询，提前将样式定制好</li>
 </ul>
 </li>
+<li>运行JavaScript<ul>
+<li>解析器阻塞资源，任何资源都被为它让道</li>
+</ul>
+</li>
+<li>构建render树<ul>
+<li>只负责可见部分，不管hidden或display: none的元素</li>
+</ul>
+</li>
+<li>生成布局（layout）<ul>
+<li>指的是根据css样式设置的大小来决定页面在窗口中的尺寸</li>
+<li>视窗的大小是由viewport来决定的</li>
+</ul>
+</li>
+<li>绘制（painting）<ul>
+<li>可以从chrome中的performance的event log面板中查看关键解析路径的全过程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>防抖 节流<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">      timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        timer = <span class="literal">null</span>;</span><br><span class="line">        fn.apply(context, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CSP 内容安全策略</p>
+<ul>
+<li>是为了从根本上解决XSS这类安全问题</li>
+<li>类似于一个白名单，它的工作原理是开发者告诉什么浏览器，什么样的外部资源可以加载和执行。开发者只需要配置即可，执行全部由浏览器负责</li>
 </ul>
 
       
