@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T12:02:16.381Z">
+<meta property="og:updated_time" content="2019-04-14T12:46:31.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -1220,6 +1220,34 @@
 <li><p>使用了CSP策略后，不符合该策略的资源就会被阻止下载，浏览器会报错</p>
 </li>
 <li>Content-Security-Policy-Report-Only 表示不阻止资源的加载，只是记录下来</li>
+</ul>
+<p>React生命周期</p>
+<ul>
+<li>初始化defaultProps、propTypes</li>
+<li>执行constructor()，其中先通过super()继承父组件的this，再添加对应的state状态</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+<li>接下来有可能出现3种情况<ul>
+<li>当父组件更新时，render()和props改变，子组件就会执行componentWillReceiveProps()函数</li>
+<li>当state或props改变时，组件都会执行shouldComponentUpdate()函数，在这个函数中判断子组件是否也需要更新，避免多余的更新，提高性能。shouldComponentUpdate()函数返回一个布尔值，返回值为true，则执行componentWillUpdate()、render()、componentDidUpdate()；如果返回值是false，则不进行任何操作</li>
+<li>组件卸载时，执行componentWillUnmount()，然后组件销毁，一个组件的生命周期就结束了</li>
+</ul>
+</li>
+</ul>
+<p>Vue生命周期</p>
+<ul>
+<li>beforeCreate</li>
+<li>created</li>
+<li>beforeMount</li>
+<li>mounted</li>
+<li>beforeUpdate</li>
+<li>updated</li>
+<li>activated：keep-alive 组件激活时调用</li>
+<li>deactivated：keep-alive 组件停用时调用</li>
+<li>beforeDestroy</li>
+<li>destroyed</li>
+<li>errorCaptured</li>
 </ul>
 
       

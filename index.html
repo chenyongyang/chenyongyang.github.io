@@ -1341,6 +1341,34 @@
 </li>
 <li>Content-Security-Policy-Report-Only 表示不阻止资源的加载，只是记录下来</li>
 </ul>
+<p>React生命周期</p>
+<ul>
+<li>初始化defaultProps、propTypes</li>
+<li>执行constructor()，其中先通过super()继承父组件的this，再添加对应的state状态</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+<li>接下来有可能出现3种情况<ul>
+<li>当父组件更新时，render()和props改变，子组件就会执行componentWillReceiveProps()函数</li>
+<li>当state或props改变时，组件都会执行shouldComponentUpdate()函数，在这个函数中判断子组件是否也需要更新，避免多余的更新，提高性能。shouldComponentUpdate()函数返回一个布尔值，返回值为true，则执行componentWillUpdate()、render()、componentDidUpdate()；如果返回值是false，则不进行任何操作</li>
+<li>组件卸载时，执行componentWillUnmount()，然后组件销毁，一个组件的生命周期就结束了</li>
+</ul>
+</li>
+</ul>
+<p>Vue生命周期</p>
+<ul>
+<li>beforeCreate</li>
+<li>created</li>
+<li>beforeMount</li>
+<li>mounted</li>
+<li>beforeUpdate</li>
+<li>updated</li>
+<li>activated：keep-alive 组件激活时调用</li>
+<li>deactivated：keep-alive 组件停用时调用</li>
+<li>beforeDestroy</li>
+<li>destroyed</li>
+<li>errorCaptured</li>
+</ul>
 
           
         
