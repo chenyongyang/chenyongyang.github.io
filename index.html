@@ -1329,6 +1329,17 @@
 <ul>
 <li>是为了从根本上解决XSS这类安全问题</li>
 <li>类似于一个白名单，它的工作原理是开发者告诉什么浏览器，什么样的外部资源可以加载和执行。开发者只需要配置即可，执行全部由浏览器负责</li>
+<li>用了这个策略以后，即使攻击者发现了网站的漏洞，也没办法插入恶意代码，除非他有掌握着白名单的可信任主机</li>
+<li><p>如何使用</p>
+<ul>
+<li>通过HTTP头信息的 Content-Security-Policy 字段</li>
+<li>通过<meta>标签<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span></span></span><br><span class="line"><span class="tag">  <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">content</span>=<span class="string">"script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用了CSP策略后，不符合该策略的资源就会被阻止下载，浏览器会报错</p>
+</li>
+<li>Content-Security-Policy-Report-Only 表示不阻止资源的加载，只是记录下来</li>
 </ul>
 
           
