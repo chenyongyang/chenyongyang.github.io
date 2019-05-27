@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="语义 区块和段落元素 section article nav header footer aside hgroup   音频和视频 audio video   表单改进 提供强制校验的API 内置提供:valid和:invalid这两个伪类，来设置元素通过或未通过时的样式 required属性 如果输入为空，表单不会提交，并会提示错误 pattern属性 支持正则表达式 minlength ma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T08:02:06.228Z">
+<meta property="og:updated_time" content="2019-05-22T08:25:08.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5知识点总结">
 <meta name="twitter:description" content="语义 区块和段落元素 section article nav header footer aside hgroup   音频和视频 audio video   表单改进 提供强制校验的API 内置提供:valid和:invalid这两个伪类，来设置元素通过或未通过时的样式 required属性 如果输入为空，表单不会提交，并会提示错误 pattern属性 支持正则表达式 minlength ma">
@@ -367,15 +367,23 @@
 <li>minlength maxlength 来强制条目的长度</li>
 </ul>
 </li>
-<li>output元素</li>
+<li>output元素：执行计算然后在output元素中展示结果</li>
 </ul>
 </li>
 <li>改进iframe，新增sandbox seamless srcdoc属性</li>
 </ul>
 </li>
 <li>流通性（通信）<ul>
-<li>web sockets 允许浏览器和服务器建立持久连接</li>
-<li>允许服务器向浏览器推送事件</li>
+<li>Web sockets<ul>
+<li>在单个TCP连接上进行全双工通讯的协议</li>
+<li>替代了Ajax轮询（缺点是：每次都包含体积很大的HTTP请求头，节省了服务器资源和带宽）的方案</li>
+<li>[<a href="https://www.runoob.com/html/html5-websocket.html]" target="_blank" rel="noopener">https://www.runoob.com/html/html5-websocket.html]</a></li>
+</ul>
+</li>
+<li>服务器向浏览器推送事件，允许网页自动获得来自服务器的更新<ul>
+<li>[<a href="https://www.runoob.com/html/html5-serversentevents.html]" target="_blank" rel="noopener">https://www.runoob.com/html/html5-serversentevents.html]</a></li>
+</ul>
+</li>
 <li>webRTC 即时通信，类似于视频会议</li>
 </ul>
 </li>
@@ -456,6 +464,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/27/关于Vue演讲的草稿/" rel="prev" title="关于Vue演讲的草稿">
+                关于Vue演讲的草稿 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -524,7 +536,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
