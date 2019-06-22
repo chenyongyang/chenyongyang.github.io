@@ -1202,7 +1202,7 @@
 <p>深拷贝</p>
 <ul>
 <li>JSON.parse(JSON.stringify(obj))</li>
-<li>使用lodash等第三方库</li>
+<li>使用lodash等第三方库 _.cloneDeep(obj)</li>
 <li>递归逐一赋值</li>
 </ul>
 <p>new运算符的执行过程</p>
@@ -1368,7 +1368,7 @@
 <li>容器属性<ul>
 <li>flex item 容器和项目两个概念 </li>
 <li>flex-direction 项目排列的方向 </li>
-<li>flex-wrap 项目是否换行 </li>
+<li>flex-wrap 项目是否换行</li>
 <li>justify-content 项目在主轴的对齐方式</li>
 <li>align-items 项目在交叉轴的对齐方式</li>
 </ul>
@@ -1715,6 +1715,28 @@
 <p>在列表渲染中，key值的作用是帮助react判断哪些属性发生了变化</p>
 <p>key属性应该定义在数组的上下文，而不是单个列表元素</p>
 <p>JavaScript内置类型：Array Date Error Function Object RegExp</p>
+<p>垂直居中方案：</p>
+<ul>
+<li>利用margin：auto法<ul>
+<li>margin：auto；top bottom left right均设置为0</li>
+</ul>
+</li>
+<li>利用margin负值法<ul>
+<li>position：absolute;</li>
+<li>top：50%;</li>
+<li>left：50%;</li>
+<li>margin-top：height/2;</li>
+<li>margin-left：width/2;</li>
+</ul>
+</li>
+<li>flex法<ul>
+<li>display：flex;</li>
+<li>display：-webkit-flex;</li>
+<li>justify-content：center;</li>
+<li>align-items：center;</li>
+</ul>
+</li>
+</ul>
 
           
         

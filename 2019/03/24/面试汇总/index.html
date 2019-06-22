@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-21T13:37:39.462Z">
+<meta property="og:updated_time" content="2019-06-22T06:12:05.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -743,7 +743,7 @@
 <p>深拷贝</p>
 <ul>
 <li>JSON.parse(JSON.stringify(obj))</li>
-<li>使用lodash等第三方库</li>
+<li>使用lodash等第三方库 _.cloneDeep(obj)</li>
 <li>递归逐一赋值</li>
 </ul>
 <p>new运算符的执行过程</p>
@@ -909,7 +909,7 @@
 <li>容器属性<ul>
 <li>flex item 容器和项目两个概念 </li>
 <li>flex-direction 项目排列的方向 </li>
-<li>flex-wrap 项目是否换行 </li>
+<li>flex-wrap 项目是否换行</li>
 <li>justify-content 项目在主轴的对齐方式</li>
 <li>align-items 项目在交叉轴的对齐方式</li>
 </ul>
@@ -1256,6 +1256,28 @@
 <p>在列表渲染中，key值的作用是帮助react判断哪些属性发生了变化</p>
 <p>key属性应该定义在数组的上下文，而不是单个列表元素</p>
 <p>JavaScript内置类型：Array Date Error Function Object RegExp</p>
+<p>垂直居中方案：</p>
+<ul>
+<li>利用margin：auto法<ul>
+<li>margin：auto；top bottom left right均设置为0</li>
+</ul>
+</li>
+<li>利用margin负值法<ul>
+<li>position：absolute;</li>
+<li>top：50%;</li>
+<li>left：50%;</li>
+<li>margin-top：height/2;</li>
+<li>margin-left：width/2;</li>
+</ul>
+</li>
+<li>flex法<ul>
+<li>display：flex;</li>
+<li>display：-webkit-flex;</li>
+<li>justify-content：center;</li>
+<li>align-items：center;</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
