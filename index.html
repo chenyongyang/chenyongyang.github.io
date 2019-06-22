@@ -808,6 +808,17 @@
 <li>resolve方法将现有对象转为promise对象</li>
 <li>reject类似于throw，是用来抛出错误的；catch是用来处理错误</li>
 <li>如果在 then 的第一个函数里抛出了异常，后面的 catch 能捕获到，而第二个函数捕获不到</li>
+<li>then方法返回一个新的promise实例</li>
+</ul>
+<p>async &amp; await</p>
+<ul>
+<li>它是Generator函数的语法糖</li>
+<li><p>将回调函数改装成Promise、Generator、async/await 这三种不同的方式来比较</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">// promise</span></span><br><span class="line"><span class="keyword">const</span> readFile = <span class="function"><span class="keyword">function</span> (<span class="params">fileName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    fs.readFile(fileName, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) <span class="keyword">return</span> reject(error);</span><br><span class="line">      resolve(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// generator</span></span><br><span class="line"><span class="keyword">const</span> gen = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> f1 = <span class="keyword">yield</span> readFile(<span class="string">'/etc/fstab'</span>);</span><br><span class="line">  <span class="keyword">const</span> f2 = <span class="keyword">yield</span> readFile(<span class="string">'/etc/shells'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// async await</span></span><br><span class="line"><span class="keyword">const</span> asyncReadFile = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> f1 = <span class="keyword">await</span> readFile(<span class="string">'/etc/fstab'</span>);</span><br><span class="line">  <span class="keyword">const</span> f2 = <span class="keyword">await</span> readFile(<span class="string">'/etc/shells'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>async函数返回一个promise对象</p>
+</li>
+<li>函数名前面的async关键字表明该函数内部有异步操作，调用该函数会立即返回一个promise对象</li>
 </ul>
 <p>link和@import的区别</p>
 <ul>
@@ -851,9 +862,27 @@
 <li>jsonp是一种数据调用格式，带callback的json就是jsonp</li>
 <li>利用script标签没有跨域限制的“漏洞”来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”}) 这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。主要是利用了html标签的src属性没有同源限制，也就是支持跨域</li>
 </ul>
-<p>跨域问题</p>
+<p>跨域问题的解决方案</p>
 <ul>
 <li>拥有跨域能力的标签：script iframe img，凡是拥有src属性的标签都拥有跨域能力</li>
+<li>CORS，也被称为跨域资源共享，是处理跨域问题的标准做法<ul>
+<li>主要分为简单请求和非简单请求<ul>
+<li>简单请求的满足条件，不满足条件的都是非简单请求<ul>
+<li>请求方法：HEAD、GET、POST</li>
+<li>HTTP头信息只能有的字段<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>domready onroad</p>
 <ul>
