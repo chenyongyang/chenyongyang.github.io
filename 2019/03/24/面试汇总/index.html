@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T06:22:41.024Z">
+<meta property="og:updated_time" content="2019-06-24T06:51:24.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -1316,10 +1316,21 @@
 </ul>
 </li>
 </ul>
-<p>vue &amp; react的不同</p>
+<p>vue &amp; react</p>
 <ul>
-<li><p>虚拟DOM</p>
+<li>相似点<ul>
+<li>虚拟DOM</li>
+<li>组件化</li>
+<li>Props</li>
+</ul>
 </li>
+<li>不同点</li>
+</ul>
+<p>虚拟DOM</p>
+<ul>
+<li>来源：改变真实DOM的状态比改变一个JavaScript对象的开销要大得多</li>
+<li>它就是一个映射真实DOM的JavaScript对象</li>
+<li>当需要改变元素的状态时，先在虚拟DOM上作改变，而不是直接修改真实DOM。当变化产生时，一个新的虚拟DOM对象会被创建，并会计算新旧虚拟DOM之间的差别，最后这些差别会应用在真实DOM上。</li>
 </ul>
 
       

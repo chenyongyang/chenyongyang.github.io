@@ -1775,10 +1775,21 @@
 </ul>
 </li>
 </ul>
-<p>vue &amp; react的不同</p>
+<p>vue &amp; react</p>
 <ul>
-<li><p>虚拟DOM</p>
+<li>相似点<ul>
+<li>虚拟DOM</li>
+<li>组件化</li>
+<li>Props</li>
+</ul>
 </li>
+<li>不同点</li>
+</ul>
+<p>虚拟DOM</p>
+<ul>
+<li>来源：改变真实DOM的状态比改变一个JavaScript对象的开销要大得多</li>
+<li>它就是一个映射真实DOM的JavaScript对象</li>
+<li>当需要改变元素的状态时，先在虚拟DOM上作改变，而不是直接修改真实DOM。当变化产生时，一个新的虚拟DOM对象会被创建，并会计算新旧虚拟DOM之间的差别，最后这些差别会应用在真实DOM上。</li>
 </ul>
 
           
