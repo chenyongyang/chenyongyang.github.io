@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T13:42:57.167Z">
+<meta property="og:updated_time" content="2019-06-25T07:38:07.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试汇总">
 <meta name="twitter:description" content="js继承方式  借用构造函数 组合继承 原型继承，后来别Object.create()规范化了 寄生式，没必要为了继承超类的原型对象而调用超类构造函数，只需将超类原型指向给一个空构造函数，然后返回该构造函数的实例对象 寄生组合式，和寄生式类似，区别在于对象属性方面仍然是通过借用构造函数来继承  箭头函数  this指向问题 不可以当做构造函数，无法使用new 不存在arguments对象，可用re">
@@ -558,6 +558,7 @@
 </ul>
 <p>csrf跨站请求伪造</p>
 <ul>
+<li>出于浏览器同源策略的限制，B网站向A网站发出ajax请求时是不会带上cookie的，A网站是不会接收到B网站的cookie，自然也就无法通过验证，但是通过csrf可以绕开同源策略的限制</li>
 <li>劫持受信任用户向服务器发送非预期请求</li>
 <li>攻击者借助受害者的cookie骗取服务器的信任</li>
 <li>涉及到浏览器的cookie策略<ul>
@@ -565,26 +566,13 @@
 </ul>
 </li>
 <li>攻击者放了一个链接，这个链接指向一些删除操作，主要目的是改变服务器的数据</li>
-<li><p>如何防范？</p>
-<ul>
+<li>如何防范？<ul>
 <li>验证码</li>
-<li><p>referer check</p>
-<ul>
-<li>在http请求头中的referer字段，表示该请求的来源地址</li>
-<li><p>对每一个删帖请求，验证其referer值，如果该值指向其他网站，那就有可能是跨站伪请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (req.headers.referer !== <span class="string">'正确的站点地址'</span>) &#123;</span><br><span class="line">		res.write(<span class="string">'csrf 攻击'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>检查referer，还能防止图片盗链</p>
-<ul>
-<li>当referer为空时, 返回正确的图；当referer不为空, 且host命中我的目标网站时, 返回正确的图；当referer不为空, 但host未能命中我的目标网站时, 返回错误的图</li>
+<li>验证HTTP Referer字段，它防止图片盗链。当referer为空时, 返回正确的图；当referer不为空, 且host命中我的目标网站时, 返回正确的图；当referer不为空, 但host未能命中我的目标网站时, 返回错误的图。缺点：http referer在某些版本的浏览器中可以被修改<ul>
+<li>在请求地址中添加token并验证，原理是在请求中放入黑客所不能伪造的、不存储于cookie中的信息。缺点：每个请求都要加，很麻烦</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>添加token验证<ul>
-<li>基本思路是在请求中添加一些攻击者无法伪造的信息，这些信息也不能存储在cookie中。在请求中添加一个类似随机数的token，服务器建立拦截器来验证</li>
-</ul>
-</li>
+<li>在HTTP头中自定义属性并验证，这个是将token添加到ajax请求中，但并不是所有的请求都走ajax</li>
 </ul>
 </li>
 </ul>
@@ -679,6 +667,7 @@
 <li>压缩js文件，具体操作：去空格、去换行符、用短小词汇重命名变量名和函数名，实际开发中都是借助一些压缩工具，如UglifyJS、Google Closure Compiler等</li>
 <li>使用cdn内容分发网络，原理是通过向地理位置最近的用户传输内容，减少网络延时</li>
 </ul>
+<p>在性能优化这一块，通常会提到合并或减少HTTP请求，但其实这个也要分情况讨论。对大资源而言，将所有资源合并在一块，如果某一小块的资源变化了，都会使得整个资源的缓存都失效，这时候将请求拆分，更有利于缓存；对小资源而言，合并请求确实有帮助</p>
 <p>css性能优化</p>
 <ul>
 <li>不要使用嵌套过多、过于复杂的选择器</li>
@@ -1337,7 +1326,7 @@
 </ul>
 </li>
 </ul>
-<p>vue &amp; react</p>
+<p>vue &amp; react 对比</p>
 <ul>
 <li>相似点<ul>
 <li>虚拟DOM</li>
@@ -1367,16 +1356,28 @@
 </ul>
 </li>
 </ul>
-<p>数据可变性上</p>
+<p>对比2</p>
 <ul>
+<li>数据可变性上<ul>
 <li>react属于函数式，纯组件，数据不可变，重新走渲染流程，可以通过shouldComponentUpdate来优化；或者直接使用PureComponent，内部自动对props和state作浅层对比</li>
-<li>vue通过把数据属性包装成一个watcher，一旦数据发生变化，就通知对应的订阅者，由订阅者去执行更新函数，所以说vue可以精确地修改对应的dom，在性能优化上不用开发者自己考虑。缺点是如果项目的数据很多，会存在很多的watcher，降低性能，所以大项目一般用react，性能优化上更可控<br>是否 all in JS</li>
+<li>vue通过把数据属性包装成一个watcher，一旦数据发生变化，就通知对应的订阅者，由订阅者去执行更新函数，所以说vue可以精确地修改对应的dom，在性能优化上不用开发者自己考虑。缺点是如果项目的数据很多，会存在很多的watcher，降低性能，所以大项目一般用react，性能优化上更可控</li>
+</ul>
+</li>
+<li>是否 all in JS<ul>
 <li>react是用js来生成html css</li>
-<li>vue是将各自分开<br>是否是声明式写法</li>
+<li>vue是将各自分开</li>
+</ul>
+</li>
+<li>是否是声明式写法<ul>
 <li>react 只需要JS就可以走通</li>
-<li>vue存在很多的API<br>对组件的扩展</li>
+<li>vue存在很多的API</li>
+</ul>
+</li>
+<li>对组件的扩展<ul>
 <li>react 高阶组件</li>
 <li>vue mixins</li>
+</ul>
+</li>
 </ul>
 <p>虚拟DOM</p>
 <ul>
@@ -1393,6 +1394,86 @@
 </ul>
 <p>私有属性、私有方法，抽象类，接口 typescript</p>
 <p>设计模式</p>
+<p>同源策略</p>
+<ul>
+<li>协议名、主机名、端口号</li>
+</ul>
+<p>html5新特性</p>
+<ul>
+<li>语义<ul>
+<li>区块和段落元素<ul>
+<li>section article nav header footer aside hgroup</li>
+</ul>
+</li>
+<li>音频和视频<ul>
+<li>audio video</li>
+</ul>
+</li>
+<li>表单改进<ul>
+<li>提供强制校验的API<ul>
+<li>内置提供:valid和:invalid这两个伪类，来设置元素通过或未通过时的样式</li>
+<li>required属性 如果输入为空，表单不会提交，并会提示错误</li>
+<li>pattern属性 支持正则表达式</li>
+<li>minlength maxlength 来强制条目的长度</li>
+</ul>
+</li>
+<li>output元素：执行计算然后在output元素中展示结果</li>
+</ul>
+</li>
+<li>改进iframe，新增sandbox seamless srcdoc属性</li>
+</ul>
+</li>
+<li>流通性（通信）<ul>
+<li>Web sockets<ul>
+<li>在单个TCP连接上进行全双工通讯的协议</li>
+<li>替代了Ajax轮询（缺点是：每次都包含体积很大的HTTP请求头，节省了服务器资源和带宽）的方案</li>
+<li>[<a href="https://www.runoob.com/html/html5-websocket.html]" target="_blank" rel="noopener">https://www.runoob.com/html/html5-websocket.html]</a></li>
+</ul>
+</li>
+<li>服务器向浏览器推送事件，允许网页自动获得来自服务器的更新<ul>
+<li>[<a href="https://www.runoob.com/html/html5-serversentevents.html]" target="_blank" rel="noopener">https://www.runoob.com/html/html5-serversentevents.html]</a></li>
+</ul>
+</li>
+<li>webRTC 即时通信，类似于视频会议</li>
+</ul>
+</li>
+<li>离线 &amp; 存储<ul>
+<li>离线资源缓存</li>
+<li>在线和离线事件，用于检测是否存在可用网络连接</li>
+<li>客户端会话和持久化存储（DOM存储）</li>
+<li>IndexedDB 能够在浏览器存储大量结构化数据</li>
+</ul>
+</li>
+<li>多媒体<ul>
+<li>audio video</li>
+<li>WebRTC 即时通信</li>
+<li>提供camera api，允许使用计算机的摄像头</li>
+</ul>
+</li>
+<li>绘画 &amp; 效果<ul>
+<li>canvas</li>
+<li>WebGL 3D图像效果</li>
+<li>SVG</li>
+</ul>
+</li>
+<li>性能 &amp; 集成<ul>
+<li>web workers 把JavaScript计算委托给后台线程</li>
+<li>History API 允许操作浏览器的历史记录</li>
+<li>contentEditable标准化</li>
+<li>拖放API</li>
+<li>requestAnimationFrame 允许控制动画渲染以获得更优性能</li>
+<li>全屏API</li>
+<li>在线离线事件（处于当前tab和离开当前tab）</li>
+</ul>
+</li>
+<li>设备访问<ul>
+<li>摄像头</li>
+<li>触控事件</li>
+<li>地理位置定位</li>
+<li>检测设备方向</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
