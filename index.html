@@ -864,8 +864,8 @@
 </ul>
 <p>跨域问题的解决方案</p>
 <ul>
+<li>总结：<a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011145364</a></li>
 <li>jsonp，见上一个条目</li>
-<li>使用拥有跨域能力的标签：script、iframe、img，凡是拥有src属性的标签都拥有跨域能力</li>
 <li>cors，也被称为跨域资源共享，是处理跨域问题的标准做法<ul>
 <li>主要分为简单请求和非简单请求<ul>
 <li>简单请求的满足条件，不满足条件的都是非简单请求<ul>
@@ -890,7 +890,7 @@
 </ul>
 </li>
 <li>Nginx反向代理，过程主要是请求的地址是前端的域名，通过对nginx进行一定的配置，使得将这个请求代理转发给真正的地址，从而绕开了跨域问题</li>
-<li>搭建中间转发层，对网络开销和性能负载都有很大的影响</li>
+<li>搭建node中间件，例如http-proxy-middleware，web-dev-server中设置代理就是依赖它</li>
 <li>由于jsonp只支持get请求，而随着RESTful的兴起，不仅有GET，还存在POST、PUT、PATCH、DELETE。所以在真正的开发中，更常用的是cors</li>
 </ul>
 <p>domready onroad</p>
@@ -1362,11 +1362,28 @@
 <li>如果两个都是基本数据类型，且类型不同，则将两者都将转化数值类型再比较</li>
 <li>如果是引用类型值，则将其转化为基本类型再比较</li>
 </ul>
-<p>bfc三个特性</p>
+<p>loader和plugin的区别</p>
 <ul>
-<li>防止外边距折叠(margin塌陷)</li>
-<li>包含浮动元素</li>
-<li>防止内容被浮动元素覆盖</li>
+<li>loader是用来加载资源(css 图片 JSX)</li>
+<li>plugin用于扩展webpack的功能</li>
+</ul>
+<p>BFC</p>
+<ul>
+<li>块级格式上下文，它是页面中的一块渲染区域，它是一个隔离的独立容器，里面元素如何布局都不会影响外界</li>
+<li>触发BFC的条件<ul>
+<li>body根元素</li>
+<li>浮动元素</li>
+<li>绝对定位元素(absolute、fixed)</li>
+<li>display为inline-block、table-cells、flex</li>
+<li>overflow不为默认值即visible</li>
+</ul>
+</li>
+<li>BFC三个特性<ul>
+<li>处于同一个BFC，外边距会发生折叠；所以如果想要避免外边距折叠，就要把元素放在不同的BFC中</li>
+<li>包含浮动元素，所以可以清除浮动</li>
+<li>阻止元素被浮动元素覆盖，可以用它实现两列自适应布局</li>
+</ul>
+</li>
 </ul>
 <p>如何获取url信息</p>
 <ul>
@@ -1488,7 +1505,7 @@
 <ul>
 <li>[<a href="http://taobaofed.org/blog/2016/09/09/webpack-flow/]" target="_blank" rel="noopener">http://taobaofed.org/blog/2016/09/09/webpack-flow/]</a></li>
 </ul>
-<p>HTTP/2新特性</p>
+<p>HTTP2新特性</p>
 <ul>
 <li>单一长连接</li>
 <li>多路复用</li>
@@ -1703,7 +1720,11 @@
 </ul>
 </li>
 </ul>
-<p>防抖 节流<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">      timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        timer = <span class="literal">null</span>;</span><br><span class="line">        fn.apply(context, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>防抖 节流</p>
+<ul>
+<li>参考：<a href="https://juejin.im/post/5b8de829f265da43623c4261" target="_blank" rel="noopener">https://juejin.im/post/5b8de829f265da43623c4261</a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时，主要用于输入框验证上，等用户最后输入完毕后再执行检验程序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。主要用于滚动事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, wait</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">      timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        timer = <span class="literal">null</span>;</span><br><span class="line">        fn.apply(context, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>CSP 内容安全策略</p>
 <ul>
 <li>是为了从根本上解决XSS这类安全问题</li>
@@ -1781,16 +1802,56 @@
 <li>虚拟DOM</li>
 <li>组件化</li>
 <li>Props</li>
+<li>脚手架</li>
+<li>chrome插件</li>
+<li>两者都是专注于UI层，其他的如路由、状态管理都交由第三方库来处理</li>
 </ul>
 </li>
-<li>不同点</li>
+<li>不同点<ul>
+<li>模板和JSX</li>
+<li>对CSS的处理方式不同<ul>
+<li>vue是通过组件的style标签进行引入的；react是css-in-js</li>
+</ul>
+</li>
+<li>生态</li>
+<li>状态管理<ul>
+<li>react由于是函数式编程，突出不可变性，所以redux是用新状态去替代旧状态；而vuex是直接改变了状态</li>
+<li>不过react + mobx的组合，使得react更像vue了</li>
+</ul>
+</li>
+<li>性能<ul>
+<li>在react中，当组件状态改变时，它会触发整个子组件数重新渲染，以根组件作为渲染基点。为了避免不必要的子组件重新渲染，你需要使用PureComponent或者实现 shouldComponentUpdate。在Vue中，一个组件在渲染期间依赖于自动追踪，因此系统知道提前预判哪一个组件需要渲染当组件状态发生改变时。每个组件可以被认为具有自动为你实现shouldComponentUpdate，不需要注意嵌套的组件。总的来说，这不需要开发人员对整个性能进行优化，允许他们更专注于构建应用程序本身。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>数据可变性上</p>
+<ul>
+<li>react属于函数式，纯组件，数据不可变，重新走渲染流程，可以通过shouldComponentUpdate来优化；或者直接使用PureComponent，内部自动对props和state作浅层对比</li>
+<li>vue通过把数据属性包装成一个watcher，一旦数据发生变化，就通知对应的订阅者，由订阅者去执行更新函数，所以说vue可以精确地修改对应的dom，在性能优化上不用开发者自己考虑。缺点是如果项目的数据很多，会存在很多的watcher，降低性能，所以大项目一般用react，性能优化上更可控<br>是否 all in JS</li>
+<li>react是用js来生成html css</li>
+<li>vue是将各自分开<br>是否是声明式写法</li>
+<li>react 只需要JS就可以走通</li>
+<li>vue存在很多的API<br>对组件的扩展</li>
+<li>react 高阶组件</li>
+<li>vue mixins</li>
 </ul>
 <p>虚拟DOM</p>
 <ul>
 <li>来源：改变真实DOM的状态比改变一个JavaScript对象的开销要大得多</li>
 <li>它就是一个映射真实DOM的JavaScript对象</li>
-<li>当需要改变元素的状态时，先在虚拟DOM上作改变，而不是直接修改真实DOM。当变化产生时，一个新的虚拟DOM对象会被创建，并会计算新旧虚拟DOM之间的差别，最后这些差别会应用在真实DOM上。</li>
+<li>当需要改变元素的状态时，先在虚拟DOM上作改变，而不是直接修改真实DOM。当变化产生时，一个新的虚拟DOM对象会被创建，并会计算新旧虚拟DOM之间的差别，最后这些差别会应用在真实DOM上</li>
 </ul>
+<p>let &amp; const</p>
+<ul>
+<li>块级作用域</li>
+<li>不可重复声明</li>
+<li>不存在变量提升</li>
+<li>存在暂时性死区</li>
+</ul>
+<p>私有属性、私有方法，抽象类，接口 typescript</p>
+<p>设计模式</p>
 
           
         
